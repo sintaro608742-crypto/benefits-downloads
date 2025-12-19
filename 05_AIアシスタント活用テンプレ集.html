@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIアシスタント活用テンプレート集</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+            font-size: 9pt;
+        }
+
+        .page {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15px;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #059669;
+        }
+
+        .header h1 {
+            font-size: 20pt;
+            color: #064e3b;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 10pt;
+            color: #666;
+        }
+
+        h2 {
+            font-size: 13pt;
+            color: #fff;
+            margin: 18px 0 10px;
+            padding: 8px 12px;
+            background: linear-gradient(90deg, #059669, #10b981);
+            border-radius: 5px;
+        }
+
+        h3 {
+            font-size: 11pt;
+            color: #064e3b;
+            margin: 12px 0 6px;
+            padding-left: 8px;
+            border-left: 3px solid #10b981;
+        }
+
+        .template-box {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .template-header {
+            background: #f3f4f6;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 10pt;
+            border-bottom: 1px solid #d1d5db;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-tag {
+            background: #059669;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 8pt;
+        }
+
+        .template-content {
+            padding: 12px;
+            background: #fafafa;
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .template-content .var {
+            background: #fef3c7;
+            padding: 1px 4px;
+            border-radius: 3px;
+            color: #92400e;
+        }
+
+        .usage-note {
+            padding: 10px;
+            background: #ecfdf5;
+            border-left: 3px solid #10b981;
+            font-size: 9pt;
+            margin-top: 8px;
+        }
+
+        .intro-box {
+            background: #f0fdf4;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border: 1px solid #bbf7d0;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .tip-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 5px;
+            font-size: 10pt;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            color: #888;
+            font-size: 8pt;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="page">
+        <div class="header">
+            <h1>AIアシスタント活用テンプレート集</h1>
+            <p class="subtitle">コピペで使える！ビジネスを加速するAIプロンプト20選</p>
+        </div>
+
+        <div class="intro-box">
+            <strong>使い方：</strong> 各テンプレートの【　】部分をあなたの情報に置き換えてください。<br>
+            ChatGPT、Claude、その他のAIチャットツールで使用できます。
+        </div>
+
+        <h2>1. SNS・コンテンツ作成</h2>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>① Instagram投稿文作成</span>
+                <span class="template-tag">SNS</span>
+            </div>
+            <div class="template-content">あなたは【業種】専門のSNSマーケターです。
+
+以下の条件でInstagram投稿文を作成してください。
+
+■ターゲット：【ターゲット層】
+■投稿の目的：【認知/教育/販売促進】
+■テーマ：【投稿のテーマ】
+■トーン：【親しみやすい/専門的/情熱的】
+
+【要件】
+・冒頭で注意を引く一文から始める
+・絵文字を適度に使用
+・最後にCTA（行動喚起）を入れる
+・ハッシュタグを10個提案
+・文字数は150〜200文字程度</div>
+            <div class="usage-note">💡 毎日の投稿作成時間を1/5に短縮できます</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>② ブログ記事構成作成</span>
+                <span class="template-tag">SEO</span>
+            </div>
+            <div class="template-content">あなたはSEOに精通したコンテンツディレクターです。
+
+以下のキーワードで検索上位を狙うブログ記事の構成を作成してください。
+
+■メインキーワード：【キーワード】
+■ターゲット読者：【誰に向けた記事か】
+■記事の目的：【読者に何をしてほしいか】
+
+【出力形式】
+1. タイトル案（3つ）
+2. メタディスクリプション
+3. H2見出し（5〜7個）
+4. 各H2の下のH3見出し（2〜3個ずつ）
+5. 記事の結論・CTA
+
+※読者の検索意図を満たす構成にしてください</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>③ メルマガ/LINE配信文作成</span>
+                <span class="template-tag">メール</span>
+            </div>
+            <div class="template-content">あなたは【業種】のメールマーケティング専門家です。
+
+以下の条件でメルマガ（またはLINE配信）の文章を作成してください。
+
+■配信の目的：【教育/告知/セールス】
+■テーマ：【今回伝えたいこと】
+■読者の状態：【見込み客/既存客/休眠客】
+■トーン：【カジュアル/ビジネス】
+
+【構成】
+1. 件名（開封したくなるもの）
+2. 冒頭の挨拶（2〜3行）
+3. 本文（価値提供）
+4. CTA（行動喚起）
+5. 追伸（P.S.）
+
+※スマホで読みやすいよう、1段落3行以内で</div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page">
+        <h2>2. セールス・営業支援</h2>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>④ 提案書の骨子作成</span>
+                <span class="template-tag">営業</span>
+            </div>
+            <div class="template-content">あなたは【業種】のセールスコンサルタントです。
+
+以下の情報から提案書の骨子を作成してください。
+
+■クライアント情報
+・業種：【クライアントの業種】
+・課題：【把握している課題】
+・予算感：【予算の目安】
+
+■自社サービス
+・提供サービス：【サービス名】
+・特徴：【3つの強み】
+・価格：【価格帯】
+
+【出力形式】
+1. 表紙タイトル
+2. 課題の整理（3点）
+3. 解決策の提案
+4. 期待される成果
+5. 実施スケジュール
+6. 投資額と費用対効果
+7. なぜ当社なのか（差別化ポイント）</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑤ FAQ回答集作成</span>
+                <span class="template-tag">CS</span>
+            </div>
+            <div class="template-content">あなたは【サービス名】のカスタマーサポート担当です。
+
+以下のサービスについて、よくある質問と回答を20個作成してください。
+
+■サービス概要：【サービスの説明】
+■価格：【価格】
+■対象者：【ターゲット】
+■提供方法：【オンライン/対面/etc】
+
+【カテゴリ別に作成】
+1. サービス内容について（5問）
+2. 価格・支払いについて（5問）
+3. 申込・キャンセルについて（5問）
+4. サポート・保証について（5問）
+
+※簡潔で分かりやすい回答を心がけてください</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑥ セールストーク台本</span>
+                <span class="template-tag">営業</span>
+            </div>
+            <div class="template-content">あなたはトップセールスパーソンです。
+
+以下の商品の商談用トーク台本を作成してください。
+
+■商品：【商品・サービス名】
+■価格：【価格】
+■ターゲット：【想定顧客】
+■商談時間：【30分/60分】
+
+【台本構成】
+1. アイスブレイク（2分）
+2. ヒアリング質問（5つ）
+3. 課題の深掘り質問（3つ）
+4. 商品説明のポイント
+5. 想定される反論と切り返し（5パターン）
+6. クロージングトーク
+7. 契約後の流れ説明</div>
+        </div>
+
+        <h2>3. 顧客対応・サポート</h2>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑦ 丁寧なお断りメール</span>
+                <span class="template-tag">メール</span>
+            </div>
+            <div class="template-content">以下の状況で、相手を不快にさせずに丁寧にお断りするメールを作成してください。
+
+■状況：【お断りする内容】
+■相手との関係：【取引先/見込み客/etc】
+■今後の関係：【継続したい/特になし】
+
+【要件】
+・感謝の気持ちを伝える
+・断る理由を簡潔に説明
+・代替案があれば提示
+・今後の関係性への配慮
+・文字数は200〜300文字程度</div>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page">
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑧ クレーム対応メール</span>
+                <span class="template-tag">CS</span>
+            </div>
+            <div class="template-content">あなたは顧客対応のプロフェッショナルです。
+
+以下のクレームに対する適切な返信メールを作成してください。
+
+■クレーム内容：【お客様からのクレーム】
+■原因：【判明している原因】
+■対応可能な解決策：【提示できる対応】
+
+【構成】
+1. お詫びの言葉
+2. 状況の確認・共感
+3. 原因の説明（言い訳にならないよう）
+4. 解決策の提示
+5. 再発防止の約束
+6. 結びの言葉
+
+※感情的にならず、誠意を持った対応を</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑨ フォローアップメール</span>
+                <span class="template-tag">営業</span>
+            </div>
+            <div class="template-content">以下の状況でフォローアップメールを作成してください。
+
+■状況：【商談後/セミナー後/資料送付後】
+■経過日数：【◯日後】
+■相手の反応：【興味あり/検討中/反応なし】
+■次のステップ目標：【アポ獲得/契約/etc】
+
+【要件】
+・押し売りにならないトーン
+・相手にとってのメリットを提示
+・明確なCTA（次のアクション）
+・返信しやすい質問を入れる</div>
+        </div>
+
+        <h2>4. 分析・戦略立案</h2>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑩ 競合分析</span>
+                <span class="template-tag">戦略</span>
+            </div>
+            <div class="template-content">あなたはマーケティング戦略コンサルタントです。
+
+以下の情報から競合分析を行ってください。
+
+■自社：【自社サービス概要】
+■競合A：【競合Aの情報】
+■競合B：【競合Bの情報】
+■競合C：【競合Cの情報】
+
+【分析項目】
+1. 各社の強み・弱み
+2. 価格比較表
+3. ポジショニングマップ
+4. 自社が勝てる領域の特定
+5. 差別化のための具体的提案（3つ）</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑪ ペルソナ作成</span>
+                <span class="template-tag">戦略</span>
+            </div>
+            <div class="template-content">以下の情報から詳細なペルソナを作成してください。
+
+■商品・サービス：【サービス概要】
+■現在の顧客層：【年齢/性別/職業など】
+■顧客の声：【よく聞く悩み・要望】
+
+【出力形式】
+1. 基本情報（名前、年齢、職業、家族構成）
+2. 1日のスケジュール
+3. 抱えている悩み（3つ）
+4. 理想の未来像
+5. 情報収集の方法
+6. 購買決定に影響する要因
+7. この人に響くメッセージ例</div>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page">
+        <h2>5. 業務効率化</h2>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑫ 会議アジェンダ作成</span>
+                <span class="template-tag">効率化</span>
+            </div>
+            <div class="template-content">以下の会議のアジェンダを作成してください。
+
+■会議の目的：【会議で決めたいこと】
+■参加者：【参加者の役職・人数】
+■所要時間：【◯分】
+■事前準備：【参加者に求める準備】
+
+【出力形式】
+1. 会議タイトル
+2. 目的（1文で）
+3. アジェンダ（時間配分付き）
+4. 各議題の担当者
+5. 決定事項の記録フォーマット
+6. 次回アクション確認</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑬ マニュアル作成</span>
+                <span class="template-tag">効率化</span>
+            </div>
+            <div class="template-content">以下の業務のマニュアルを作成してください。
+
+■業務名：【業務の名称】
+■目的：【この業務の目的】
+■担当者：【誰が行う業務か】
+■頻度：【毎日/週1/月1】
+■使用ツール：【使うツール・システム】
+
+【出力形式】
+1. 業務概要
+2. 事前準備チェックリスト
+3. 手順（ステップバイステップ）
+4. 注意点・よくあるミス
+5. トラブル時の対応
+6. 完了チェックリスト</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-header">
+                <span>⑭ 議事録作成</span>
+                <span class="template-tag">効率化</span>
+            </div>
+            <div class="template-content">以下の会議メモから議事録を作成してください。
+
+■会議名：【会議名】
+■日時：【日時】
+■参加者：【参加者】
+■メモ：
+【ここに会議中のメモを貼り付け】
+
+【出力形式】
+1. 会議概要（目的・結論を1文で）
+2. 決定事項（箇条書き）
+3. 議論内容（トピックごと）
+4. 次回アクション（担当者・期限付き）
+5. 次回会議予定</div>
+        </div>
+
+        <h2>6. 人材・組織</h2>
+
+        <div class="two-col">
+            <div class="template-box">
+                <div class="template-header">
+                    <span>⑮ 求人原稿作成</span>
+                    <span class="template-tag">採用</span>
+                </div>
+                <div class="template-content">■職種：【募集職種】
+■雇用形態：【正社員/業務委託】
+■求める人物像：【スキル・人柄】
+■待遇：【給与・福利厚生】
+
+魅力的な求人原稿を作成して</div>
+            </div>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <span>⑯ 面接質問リスト</span>
+                    <span class="template-tag">採用</span>
+                </div>
+                <div class="template-content">■職種：【募集職種】
+■重視する能力：【3つ】
+■面接時間：【◯分】
+
+能力を見極める質問を
+20個作成して</div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-title">💡 AIプロンプトを使いこなすコツ</div>
+            <p>1. <strong>具体的な指示を出す</strong>：曖昧な依頼より、詳細な条件を伝える<br>
+            2. <strong>役割を与える</strong>：「あなたは〇〇の専門家です」と前置きする<br>
+            3. <strong>出力形式を指定</strong>：箇条書き、表形式など望む形を伝える<br>
+            4. <strong>フィードバックする</strong>：最初の出力を改善してもらう</p>
+        </div>
+
+        <div class="footer">
+            <p>このテンプレート集を活用して、日々の業務を効率化してください。</p>
+            <p>© 吉田塾 - AIアシスタント活用テンプレート集</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高単価商品設計テンプレート - 30万円以上の商品を作る完全ワークシート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            padding: 15mm;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .page-header .page-num {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Section Styles */
+        h2 {
+            font-size: 16px;
+            color: #1a1a2e;
+            padding: 10px 15px;
+            background: #f0f0f0;
+            border-left: 4px solid #7c3aed;
+            margin: 20px 0 15px;
+        }
+
+        h3 {
+            font-size: 14px;
+            color: #7c3aed;
+            margin: 15px 0 10px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 13px;
+            min-height: 40px;
+        }
+
+        .form-input.large {
+            min-height: 80px;
+        }
+
+        .form-input.xl {
+            min-height: 120px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Tables */
+        .worksheet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+
+        .worksheet-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .worksheet-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .worksheet-table .editable {
+            min-height: 30px;
+        }
+
+        .worksheet-table .row-header {
+            background: #f5f5f5;
+            font-weight: 600;
+            width: 120px;
+        }
+
+        /* Highlight Boxes */
+        .tip-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+
+        .tip-box strong {
+            color: #b45309;
+        }
+
+        .example-box {
+            background: #ede9fe;
+            border: 1px solid #7c3aed;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+
+        .example-box strong {
+            color: #5b21b6;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .checklist .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #7c3aed;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Score Card */
+        .score-row {
+            display: grid;
+            grid-template-columns: 1fr 100px 60px;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .score-row:first-child {
+            font-weight: 700;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .score-input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Price Calculator */
+        .calc-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 120px;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .calc-label {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .calc-note {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .calc-value {
+            text-align: right;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: calc(297mm - 30mm);
+        }
+
+        .cover-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .cover h1 {
+            font-size: 32px;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .cover-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .cover-features {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .cover-feature {
+            text-align: center;
+        }
+
+        .cover-feature-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .cover-feature-text {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .cover-info {
+            background: #f5f5f5;
+            padding: 20px 40px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .cover-info p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Framework Box */
+        .framework-box {
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .framework-header {
+            background: #7c3aed;
+            color: white;
+            padding: 10px 15px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .framework-content {
+            padding: 15px;
+        }
+
+        /* Persona Card */
+        .persona-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .persona-header {
+            background: #1a1a2e;
+            color: white;
+            padding: 12px 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .persona-body {
+            padding: 15px;
+        }
+
+        .persona-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .persona-row:last-child {
+            border-bottom: none;
+        }
+
+        .persona-label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        /* Footer */
+        .page-footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #999;
+        }
+
+        @media print {
+            body { background: white; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page">
+        <div class="cover">
+            <div class="cover-icon">💎</div>
+            <h1>高単価商品設計テンプレート</h1>
+            <p class="cover-subtitle">30万円〜100万円以上の商品を作る完全ワークシート</p>
+
+            <div class="cover-features">
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">🎯</div>
+                    <div class="cover-feature-text">コンセプト<br>設計シート</div>
+                </div>
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">💰</div>
+                    <div class="cover-feature-text">価格設定<br>計算シート</div>
+                </div>
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">👤</div>
+                    <div class="cover-feature-text">ペルソナ<br>設計シート</div>
+                </div>
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">📦</div>
+                    <div class="cover-feature-text">商品構成<br>設計シート</div>
+                </div>
+            </div>
+
+            <div class="cover-info">
+                <p>このテンプレートは印刷して手書きで記入するか、<br>PDFに直接入力してご使用ください</p>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>高単価商品設計テンプレート</span>
+            <span>1 / 6</span>
+        </div>
+    </div>
+
+    <!-- Page 2: Concept Design -->
+    <div class="page">
+        <div class="page-header">
+            <h1>SHEET 1：商品コンセプト設計</h1>
+            <span class="page-num">2 / 6</span>
+        </div>
+
+        <h2>1. 商品の基本情報</h2>
+
+        <div class="grid-2">
+            <div class="form-group">
+                <label class="form-label">商品名（仮でOK）</label>
+                <div class="form-input"></div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">想定価格帯</label>
+                <div class="form-input"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">一言で表す商品コンセプト（20文字以内）</label>
+            <div class="form-input"></div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 TIP:</strong> 良いコンセプトは「誰が」「何を得られるか」が明確。例：「3ヶ月で月収100万円を達成する起業塾」
+        </div>
+
+        <h2>2. Before → After 設計</h2>
+
+        <table class="worksheet-table">
+            <tr>
+                <th width="50%">Before（顧客の現状・悩み）</th>
+                <th width="50%">After（商品後の理想の状態）</th>
+            </tr>
+            <tr>
+                <td class="editable" style="height: 80px;"></td>
+                <td class="editable" style="height: 80px;"></td>
+            </tr>
+        </table>
+
+        <h2>3. 高単価の3つの正当性</h2>
+
+        <div class="framework-box">
+            <div class="framework-header">高単価が成立する3条件をチェック</div>
+            <div class="framework-content">
+                <ul class="checklist">
+                    <li>
+                        <div class="checkbox"></div>
+                        <div>
+                            <strong>① 結果の大きさ</strong>：顧客が得られる成果は価格の10倍以上の価値があるか？<br>
+                            <span style="font-size:12px; color:#666;">記入欄：</span>
+                            <div class="form-input" style="min-height:40px; margin-top:5px;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="checkbox"></div>
+                        <div>
+                            <strong>② 独自性・希少性</strong>：他では手に入らない要素は何か？<br>
+                            <span style="font-size:12px; color:#666;">記入欄：</span>
+                            <div class="form-input" style="min-height:40px; margin-top:5px;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="checkbox"></div>
+                        <div>
+                            <strong>③ サポートの手厚さ</strong>：どこまで顧客に寄り添えるか？<br>
+                            <span style="font-size:12px; color:#666;">記入欄：</span>
+                            <div class="form-input" style="min-height:40px; margin-top:5px;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>高単価商品設計テンプレート</span>
+            <span>2 / 6</span>
+        </div>
+    </div>
+
+    <!-- Page 3: Persona Design -->
+    <div class="page">
+        <div class="page-header">
+            <h1>SHEET 2：ターゲット・ペルソナ設計</h1>
+            <span class="page-num">3 / 6</span>
+        </div>
+
+        <h2>1. ターゲット層の定義</h2>
+
+        <div class="grid-3">
+            <div class="form-group">
+                <label class="form-label">年齢層</label>
+                <div class="form-input"></div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">性別</label>
+                <div class="form-input"></div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">職業・立場</label>
+                <div class="form-input"></div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="form-group">
+                <label class="form-label">年収・月収レンジ</label>
+                <div class="form-input"></div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">支払い能力（一括/分割）</label>
+                <div class="form-input"></div>
+            </div>
+        </div>
+
+        <h2>2. 理想の顧客ペルソナ（1人を具体的に）</h2>
+
+        <div class="persona-card">
+            <div class="persona-header">
+                <span>👤</span>
+                <span>理想の顧客像</span>
+            </div>
+            <div class="persona-body">
+                <div class="persona-row">
+                    <span class="persona-label">名前（仮）</span>
+                    <div class="form-input" style="min-height:30px;"></div>
+                </div>
+                <div class="persona-row">
+                    <span class="persona-label">年齢・家族構成</span>
+                    <div class="form-input" style="min-height:30px;"></div>
+                </div>
+                <div class="persona-row">
+                    <span class="persona-label">現在の仕事・収入</span>
+                    <div class="form-input" style="min-height:30px;"></div>
+                </div>
+                <div class="persona-row">
+                    <span class="persona-label">抱えている悩み TOP3</span>
+                    <div class="form-input" style="min-height:50px;"></div>
+                </div>
+                <div class="persona-row">
+                    <span class="persona-label">理想の未来</span>
+                    <div class="form-input" style="min-height:50px;"></div>
+                </div>
+                <div class="persona-row">
+                    <span class="persona-label">購入の障壁</span>
+                    <div class="form-input" style="min-height:50px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>3. 購入決定要因の分析</h2>
+
+        <table class="worksheet-table">
+            <tr>
+                <th>購入を決める要素</th>
+                <th>重要度<br>(1-5)</th>
+                <th>自社商品での対応</th>
+            </tr>
+            <tr>
+                <td>実績・権威性</td>
+                <td class="editable" style="width:80px;"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td>サポート体制</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td>成果保証・返金保証</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td>コミュニティ・仲間</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td>講師との距離感</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <div class="page-footer">
+            <span>高単価商品設計テンプレート</span>
+            <span>3 / 6</span>
+        </div>
+    </div>
+
+    <!-- Page 4: Product Structure -->
+    <div class="page">
+        <div class="page-header">
+            <h1>SHEET 3：商品構成・カリキュラム設計</h1>
+            <span class="page-num">4 / 6</span>
+        </div>
+
+        <h2>1. 商品の提供形式</h2>
+
+        <ul class="checklist">
+            <li><div class="checkbox"></div>動画コンテンツ（収録型）</li>
+            <li><div class="checkbox"></div>ライブセッション（グループ）</li>
+            <li><div class="checkbox"></div>1on1コンサルティング</li>
+            <li><div class="checkbox"></div>コミュニティ（Slack/Discord等）</li>
+            <li><div class="checkbox"></div>テンプレート・ツール提供</li>
+            <li><div class="checkbox"></div>その他：<span style="border-bottom:1px solid #ddd; display:inline-block; width:200px;"></span></li>
+        </ul>
+
+        <h2>2. カリキュラム構成</h2>
+
+        <table class="worksheet-table">
+            <tr>
+                <th style="width:60px;">Week</th>
+                <th>テーマ・内容</th>
+                <th style="width:120px;">提供形式</th>
+                <th style="width:100px;">成果物</th>
+            </tr>
+            <tr>
+                <td class="row-header">Week 1</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">Week 2</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">Week 3</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">Week 4</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">Week 5</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">Week 6</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">Week 7</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">Week 8</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <h2>3. 特典・ボーナスコンテンツ</h2>
+
+        <table class="worksheet-table">
+            <tr>
+                <th>特典名</th>
+                <th>内容・価値</th>
+                <th style="width:100px;">想定価値</th>
+            </tr>
+            <tr>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <div class="example-box">
+            <strong>💎 高単価特典のアイデア例：</strong>
+            <span style="font-size:12px;">個別添削、VIPコンサル枠、限定コミュニティ、永久アップデート権、成功事例集、専用ツール、合宿参加権など</span>
+        </div>
+
+        <div class="page-footer">
+            <span>高単価商品設計テンプレート</span>
+            <span>4 / 6</span>
+        </div>
+    </div>
+
+    <!-- Page 5: Pricing -->
+    <div class="page">
+        <div class="page-header">
+            <h1>SHEET 4：価格設定計算シート</h1>
+            <span class="page-num">5 / 6</span>
+        </div>
+
+        <h2>1. 価値ベースの価格設定</h2>
+
+        <div class="calc-row">
+            <span class="calc-label">顧客が得られる成果の金銭的価値</span>
+            <span class="calc-note">（年収UP額、売上増加額、節約額など）</span>
+            <div class="calc-value form-input" style="min-height:30px;"></div>
+        </div>
+
+        <div class="calc-row">
+            <span class="calc-label">時間的価値</span>
+            <span class="calc-note">（節約できる時間 × 時給換算）</span>
+            <div class="calc-value form-input" style="min-height:30px;"></div>
+        </div>
+
+        <div class="calc-row">
+            <span class="calc-label">感情的価値</span>
+            <span class="calc-note">（ストレス解消、安心感など）</span>
+            <div class="calc-value form-input" style="min-height:30px;"></div>
+        </div>
+
+        <div class="calc-row" style="background:#f5f5f5; padding:15px; border-radius:4px;">
+            <span class="calc-label"><strong>合計価値</strong></span>
+            <span class="calc-note"></span>
+            <div class="calc-value form-input" style="min-height:30px; font-weight:bold;"></div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 価格設定の目安：</strong> 提供価値の10〜20%が適正価格。価値100万円なら10〜20万円が目安。
+        </div>
+
+        <h2>2. 競合比較による価格検証</h2>
+
+        <table class="worksheet-table">
+            <tr>
+                <th>競合サービス名</th>
+                <th style="width:100px;">価格</th>
+                <th>含まれる内容</th>
+                <th style="width:100px;">差別化点</th>
+            </tr>
+            <tr>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <h2>3. 収益シミュレーション</h2>
+
+        <div class="grid-2">
+            <div>
+                <h3>販売価格の決定</h3>
+                <div class="calc-row">
+                    <span class="calc-label">本体価格</span>
+                    <span></span>
+                    <div class="calc-value form-input" style="min-height:30px;"></div>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">分割払い価格</span>
+                    <span class="calc-note">（○回払い）</span>
+                    <div class="calc-value form-input" style="min-height:30px;"></div>
+                </div>
+            </div>
+            <div>
+                <h3>月間収益目標</h3>
+                <div class="calc-row">
+                    <span class="calc-label">目標月商</span>
+                    <span></span>
+                    <div class="calc-value form-input" style="min-height:30px;"></div>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">必要販売数/月</span>
+                    <span></span>
+                    <div class="calc-value form-input" style="min-height:30px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>4. 価格帯別オファー設計（松竹梅）</h2>
+
+        <table class="worksheet-table">
+            <tr>
+                <th>プラン名</th>
+                <th>価格</th>
+                <th>含まれる内容</th>
+                <th style="width:80px;">想定比率</th>
+            </tr>
+            <tr>
+                <td class="row-header">松（プレミアム）</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable">10%</td>
+            </tr>
+            <tr>
+                <td class="row-header">竹（スタンダード）</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable">60%</td>
+            </tr>
+            <tr>
+                <td class="row-header">梅（ライト）</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable">30%</td>
+            </tr>
+        </table>
+
+        <div class="page-footer">
+            <span>高単価商品設計テンプレート</span>
+            <span>5 / 6</span>
+        </div>
+    </div>
+
+    <!-- Page 6: Sales Strategy -->
+    <div class="page">
+        <div class="page-header">
+            <h1>SHEET 5：販売戦略・差別化設計</h1>
+            <span class="page-num">6 / 6</span>
+        </div>
+
+        <h2>1. USP（独自の売り）の明確化</h2>
+
+        <div class="form-group">
+            <label class="form-label">あなた（商品）だけの強み・差別化ポイントは？</label>
+            <div class="form-input large"></div>
+        </div>
+
+        <div class="framework-box">
+            <div class="framework-header">USP作成フレームワーク</div>
+            <div class="framework-content">
+                <p style="font-size:13px; margin-bottom:10px;">「<span style="border-bottom:1px solid #333; padding:0 40px;"></span>で悩んでいる</p>
+                <p style="font-size:13px; margin-bottom:10px;">「<span style="border-bottom:1px solid #333; padding:0 40px;"></span>な人が」</p>
+                <p style="font-size:13px; margin-bottom:10px;">「<span style="border-bottom:1px solid #333; padding:0 40px;"></span>によって」</p>
+                <p style="font-size:13px;">「<span style="border-bottom:1px solid #333; padding:0 40px;"></span>を実現できる」</p>
+            </div>
+        </div>
+
+        <h2>2. 成約率を上げる要素チェックリスト</h2>
+
+        <div class="grid-2">
+            <div>
+                <h3>信頼性・権威性</h3>
+                <ul class="checklist">
+                    <li><div class="checkbox"></div>実績数値（○人が成果を出した等）</li>
+                    <li><div class="checkbox"></div>メディア掲載・出版実績</li>
+                    <li><div class="checkbox"></div>お客様の声・事例</li>
+                    <li><div class="checkbox"></div>資格・認定</li>
+                </ul>
+            </div>
+            <div>
+                <h3>リスクリバーサル</h3>
+                <ul class="checklist">
+                    <li><div class="checkbox"></div>返金保証</li>
+                    <li><div class="checkbox"></div>成果保証</li>
+                    <li><div class="checkbox"></div>無料お試し期間</li>
+                    <li><div class="checkbox"></div>分割払い対応</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>3. セールスファネル設計</h2>
+
+        <table class="worksheet-table">
+            <tr>
+                <th>ステップ</th>
+                <th>内容・施策</th>
+                <th style="width:100px;">目標数値</th>
+            </tr>
+            <tr>
+                <td class="row-header">認知</td>
+                <td class="editable">（SNS・広告・紹介など）</td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">興味</td>
+                <td class="editable">（無料コンテンツ・リード獲得）</td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">検討</td>
+                <td class="editable">（セミナー・個別相談）</td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">購入</td>
+                <td class="editable">（セールス・クロージング）</td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <h2>4. ローンチ前最終チェックリスト</h2>
+
+        <ul class="checklist">
+            <li><div class="checkbox"></div>商品名・キャッチコピーが決まっている</li>
+            <li><div class="checkbox"></div>価格と支払い方法が決まっている</li>
+            <li><div class="checkbox"></div>LP（販売ページ）が完成している</li>
+            <li><div class="checkbox"></div>決済システムが整っている</li>
+            <li><div class="checkbox"></div>顧客対応フローが決まっている</li>
+            <li><div class="checkbox"></div>特典・ボーナスが準備できている</li>
+            <li><div class="checkbox"></div>お客様の声・事例が用意できている</li>
+            <li><div class="checkbox"></div>FAQ（よくある質問）を準備した</li>
+        </ul>
+
+        <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px;">
+            <p style="margin: 0; font-size: 14px;">
+                <strong>高単価商品は「価格」ではなく「価値」で選ばれる</strong><br>
+                <span style="font-size: 12px; opacity: 0.8;">顧客の人生を変える商品を作り、正当な対価を受け取りましょう</span>
+            </p>
+        </div>
+
+        <div class="page-footer">
+            <span>高単価商品設計テンプレート</span>
+            <span>6 / 6</span>
+        </div>
+    </div>
+</body>
+</html>

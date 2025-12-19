@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1日3時間経営の作り方 - 月収300万超え起業家の時間術</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            padding: 25mm 20mm;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #00d4aa, #7c3aed, #00d4aa);
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .cover h1 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4aa 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cover-subtitle {
+            font-size: 20px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+
+        .cover-features {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .cover-feature {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            width: 150px;
+        }
+
+        .cover-feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .cover-feature-text {
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        .target-box {
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+            max-width: 500px;
+        }
+
+        .target-box h3 {
+            color: #00d4aa;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .target-box ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .target-box li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .target-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00d4aa;
+        }
+
+        /* Content Pages */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(124, 58, 237, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 .icon {
+            font-size: 32px;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #00d4aa;
+            margin: 25px 0 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .intro-text {
+            background: rgba(124, 58, 237, 0.1);
+            border-left: 4px solid #7c3aed;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Time Audit Section */
+        .time-audit {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .time-category {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .time-category.eliminate {
+            border-color: rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .time-category.automate {
+            border-color: rgba(245, 158, 11, 0.5);
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .time-category.delegate {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .time-category.focus {
+            border-color: rgba(0, 212, 170, 0.5);
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        .time-category h4 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .time-category.eliminate h4 { color: #ef4444; }
+        .time-category.automate h4 { color: #f59e0b; }
+        .time-category.delegate h4 { color: #3b82f6; }
+        .time-category.focus h4 { color: #00d4aa; }
+
+        .time-category ul {
+            list-style: none;
+            font-size: 13px;
+        }
+
+        .time-category li {
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .time-category li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Schedule Template */
+        .schedule {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 25px 0;
+        }
+
+        .schedule-header {
+            background: linear-gradient(135deg, #7c3aed 0%, #00d4aa 100%);
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .schedule-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .schedule-row:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-time {
+            padding: 15px;
+            background: rgba(124, 58, 237, 0.1);
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .schedule-task {
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .schedule-type {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .type-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .type-badge.ceo { background: rgba(0, 212, 170, 0.2); color: #00d4aa; }
+        .type-badge.routine { background: rgba(124, 58, 237, 0.2); color: #a78bfa; }
+        .type-badge.free { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+
+        /* Pillars Section */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .pillar {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pillar-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #7c3aed 0%, #00d4aa 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 15px;
+        }
+
+        .pillar h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .pillar p {
+            font-size: 12px;
+            color: #a0a0a0;
+            margin: 0;
+        }
+
+        /* Tool Stack */
+        .tool-stack {
+            margin: 25px 0;
+        }
+
+        .tool-row {
+            display: grid;
+            grid-template-columns: 150px 1fr 1fr;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            align-items: center;
+        }
+
+        .tool-row:first-child {
+            background: rgba(124, 58, 237, 0.1);
+            padding: 12px 15px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .tool-category {
+            font-weight: 600;
+            font-size: 13px;
+            color: #00d4aa;
+        }
+
+        .tool-name {
+            font-size: 13px;
+        }
+
+        .tool-effect {
+            font-size: 12px;
+            color: #a0a0a0;
+        }
+
+        /* Checklist */
+        .checklist {
+            background: rgba(0, 212, 170, 0.05);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .checklist h4 {
+            color: #00d4aa;
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            padding: 8px 0;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(0, 212, 170, 0.5);
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Mindset Section */
+        .mindset-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .mindset-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mindset-card h4 {
+            font-size: 15px;
+            color: #7c3aed;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mindset-card p {
+            font-size: 13px;
+            margin: 0;
+            color: #b0b0b0;
+        }
+
+        /* Case Study */
+        .case-study {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(0, 212, 170, 0.1) 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .case-study h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .case-before-after {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .case-before, .case-after {
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .case-before {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .case-after {
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+        }
+
+        .case-label {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .case-before .case-label { color: #ef4444; }
+        .case-after .case-label { color: #00d4aa; }
+
+        .case-content {
+            font-size: 13px;
+        }
+
+        .case-arrow {
+            font-size: 24px;
+            color: #7c3aed;
+        }
+
+        /* Step by Step */
+        .steps {
+            margin: 25px 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #7c3aed 0%, #00d4aa 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .step-content p {
+            font-size: 13px;
+            color: #a0a0a0;
+            margin: 0;
+        }
+
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #606060;
+        }
+
+        @media print {
+            body { background: white; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page cover">
+        <div class="cover-icon">⏰</div>
+        <h1>1日3時間経営の<br>作り方</h1>
+        <p class="cover-subtitle">月収300万円超え起業家の時間術完全ガイド</p>
+
+        <div class="cover-features">
+            <div class="cover-feature">
+                <div class="cover-feature-icon">🎯</div>
+                <div class="cover-feature-text">CEO業務に<br>集中する方法</div>
+            </div>
+            <div class="cover-feature">
+                <div class="cover-feature-icon">🤖</div>
+                <div class="cover-feature-text">自動化＆<br>外注の仕組み</div>
+            </div>
+            <div class="cover-feature">
+                <div class="cover-feature-icon">📅</div>
+                <div class="cover-feature-text">理想の1日<br>スケジュール</div>
+            </div>
+        </div>
+
+        <div class="target-box">
+            <h3>こんな方におすすめ</h3>
+            <ul>
+                <li>売上は上がっているのに時間がない</li>
+                <li>自分がいないとビジネスが回らない</li>
+                <li>戦略を考える時間が確保できない</li>
+                <li>「忙しい」が口癖になっている</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>1日3時間経営の作り方</span>
+            <span>1 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 2: Time Audit & Schedule -->
+    <div class="page">
+        <h2><span class="icon">🔍</span>Step 1：タイムオーディット</h2>
+
+        <div class="intro-text">
+            <p style="margin:0;">まずは現在の時間の使い方を4つに分類します。<br>
+            <strong>「やめる」「自動化」「任せる」「集中」</strong>のどれに該当するかを判断することが第一歩です。</p>
+        </div>
+
+        <div class="time-audit">
+            <div class="time-category eliminate">
+                <h4>🚫 やめる（Eliminate）</h4>
+                <ul>
+                    <li>無意味な会議・打ち合わせ</li>
+                    <li>成果に繋がらないSNS閲覧</li>
+                    <li>完璧主義による過剰な作り込み</li>
+                    <li>優先度の低いメール対応</li>
+                    <li>断れない依頼への対応</li>
+                </ul>
+            </div>
+
+            <div class="time-category automate">
+                <h4>🤖 自動化（Automate）</h4>
+                <ul>
+                    <li>定型メール・DM返信</li>
+                    <li>請求書発行・経理処理</li>
+                    <li>SNS投稿・スケジュール</li>
+                    <li>顧客フォローアップ</li>
+                    <li>データ集計・レポート作成</li>
+                </ul>
+            </div>
+
+            <div class="time-category delegate">
+                <h4>👥 任せる（Delegate）</h4>
+                <ul>
+                    <li>コンテンツ制作・編集</li>
+                    <li>カスタマーサポート</li>
+                    <li>リサーチ・情報収集</li>
+                    <li>事務作業全般</li>
+                    <li>LP・サイト更新</li>
+                </ul>
+            </div>
+
+            <div class="time-category focus">
+                <h4>🎯 集中（Focus）</h4>
+                <ul>
+                    <li>商品企画・戦略立案</li>
+                    <li>高単価セールス・商談</li>
+                    <li>パートナーシップ構築</li>
+                    <li>チームビルディング</li>
+                    <li>自己投資・学習</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>理想の3時間スケジュール例</h3>
+
+        <div class="schedule">
+            <div class="schedule-header">📅 1日3時間経営のタイムブロック</div>
+            <div class="schedule-row">
+                <div class="schedule-time">9:00-10:00</div>
+                <div class="schedule-task"><strong>CEO時間①</strong>：戦略思考・商品企画</div>
+                <div class="schedule-type"><span class="type-badge ceo">CEO業務</span></div>
+            </div>
+            <div class="schedule-row">
+                <div class="schedule-time">10:00-10:30</div>
+                <div class="schedule-task"><strong>コミュニケーション</strong>：チームへの指示出し・確認</div>
+                <div class="schedule-type"><span class="type-badge routine">ルーティン</span></div>
+            </div>
+            <div class="schedule-row">
+                <div class="schedule-time">10:30-11:30</div>
+                <div class="schedule-task"><strong>CEO時間②</strong>：商談・パートナー対応</div>
+                <div class="schedule-type"><span class="type-badge ceo">CEO業務</span></div>
+            </div>
+            <div class="schedule-row">
+                <div class="schedule-time">11:30-12:00</div>
+                <div class="schedule-task"><strong>振り返り</strong>：進捗確認・翌日の準備</div>
+                <div class="schedule-type"><span class="type-badge routine">ルーティン</span></div>
+            </div>
+            <div class="schedule-row">
+                <div class="schedule-time">12:00〜</div>
+                <div class="schedule-task"><strong>自由時間</strong>：プライベート・自己投資・休息</div>
+                <div class="schedule-type"><span class="type-badge free">OFF</span></div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>1日3時間経営の作り方</span>
+            <span>2 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 3: Three Pillars & Tools -->
+    <div class="page">
+        <h2><span class="icon">🏛️</span>Step 2：3時間経営の3本柱</h2>
+
+        <div class="pillars">
+            <div class="pillar">
+                <div class="pillar-number">1</div>
+                <h4>仕組み化</h4>
+                <p>属人的な業務をマニュアル化し、誰でも再現可能な状態にする</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-number">2</div>
+                <h4>自動化</h4>
+                <p>ツール・AIを活用して人の手を介さない仕組みを構築</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-number">3</div>
+                <h4>外注化</h4>
+                <p>CEO以外ができる業務は外部リソースに任せる</p>
+            </div>
+        </div>
+
+        <h3>時短を実現するツールスタック</h3>
+
+        <div class="tool-stack">
+            <div class="tool-row">
+                <div>カテゴリ</div>
+                <div>おすすめツール</div>
+                <div>削減時間の目安</div>
+            </div>
+            <div class="tool-row">
+                <div class="tool-category">メール・連絡</div>
+                <div class="tool-name">Lステップ / メール配信スタンド</div>
+                <div class="tool-effect">週5時間 → 30分</div>
+            </div>
+            <div class="tool-row">
+                <div class="tool-category">SNS運用</div>
+                <div class="tool-name">SocialDog / Buffer / 予約投稿</div>
+                <div class="tool-effect">週7時間 → 1時間</div>
+            </div>
+            <div class="tool-row">
+                <div class="tool-category">経理・請求</div>
+                <div class="tool-name">freee / マネーフォワード</div>
+                <div class="tool-effect">月10時間 → 1時間</div>
+            </div>
+            <div class="tool-row">
+                <div class="tool-category">スケジュール</div>
+                <div class="tool-name">Calendly / TimeRex</div>
+                <div class="tool-effect">週3時間 → 0分</div>
+            </div>
+            <div class="tool-row">
+                <div class="tool-category">コンテンツ制作</div>
+                <div class="tool-name">ChatGPT / Claude / Canva</div>
+                <div class="tool-effect">週10時間 → 2時間</div>
+            </div>
+            <div class="tool-row">
+                <div class="tool-category">顧客管理</div>
+                <div class="tool-name">Notion / Airtable / HubSpot</div>
+                <div class="tool-effect">週4時間 → 30分</div>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h4>📊 Before → After 実例</h4>
+            <div class="case-before-after">
+                <div class="case-before">
+                    <div class="case-label">BEFORE</div>
+                    <div class="case-content">
+                        <strong>稼働時間：週50時間</strong><br>
+                        ・メール対応：2時間/日<br>
+                        ・SNS投稿：1.5時間/日<br>
+                        ・経理作業：3時間/週<br>
+                        ・商談：2時間/日<br>
+                        ・その他雑務：1.5時間/日
+                    </div>
+                </div>
+                <div class="case-arrow">→</div>
+                <div class="case-after">
+                    <div class="case-label">AFTER</div>
+                    <div class="case-content">
+                        <strong>稼働時間：週15時間</strong><br>
+                        ・メール：自動化で30分/日<br>
+                        ・SNS：予約投稿で週1時間<br>
+                        ・経理：ツールで月1時間<br>
+                        ・商談：厳選して1時間/日<br>
+                        ・雑務：外注で0分
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>1日3時間経営の作り方</span>
+            <span>3 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 4: Implementation & Mindset -->
+    <div class="page">
+        <h2><span class="icon">🚀</span>Step 3：実装ステップ</h2>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>1週間の業務を全て書き出す</h4>
+                    <p>まず現状把握。何にどれだけ時間を使っているか15分単位で記録する</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>4分類に振り分ける</h4>
+                    <p>「やめる」「自動化」「任せる」「集中」に全業務を分類する</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>「やめる」を即実行</h4>
+                    <p>最も簡単な時短。成果に繋がらないことを今日からやめる決断をする</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>自動化ツールを導入</h4>
+                    <p>効果が高い順に1つずつ導入。一気にやらず、1週間に1ツールのペースで</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>外注パートナーを確保</h4>
+                    <p>クラウドソーシング等で信頼できるパートナーを見つけ、少額から依頼開始</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>3時間経営を維持するマインドセット</h3>
+
+        <div class="mindset-cards">
+            <div class="mindset-card">
+                <h4>💡 完璧を捨てる</h4>
+                <p>80%の完成度で十分。残り20%に80%の時間がかかることを理解する</p>
+            </div>
+            <div class="mindset-card">
+                <h4>💡 「NO」を言う勇気</h4>
+                <p>全ての依頼を受ける必要はない。時間は最も貴重なリソース</p>
+            </div>
+            <div class="mindset-card">
+                <h4>💡 時給思考を持つ</h4>
+                <p>自分の時給を計算し、それ以下の仕事は外注するのが合理的</p>
+            </div>
+            <div class="mindset-card">
+                <h4>💡 仕組みへの投資</h4>
+                <p>ツール代・外注費は「経費」ではなく「時間を買う投資」と考える</p>
+            </div>
+        </div>
+
+        <div class="checklist">
+            <h4>✅ 3時間経営チェックリスト</h4>
+            <div class="checklist-grid">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>業務の棚卸しが完了している</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>やめる業務をリスト化した</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>自動化ツールを1つ以上導入</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>外注パートナーを1人以上確保</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>CEO業務の時間をブロック</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>理想の1日スケジュールを作成</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>週次の振り返り習慣がある</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>時給を把握している</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(0, 212, 170, 0.2) 100%); border-radius: 12px; padding: 20px; text-align: center; margin-top: 20px;">
+            <p style="margin: 0; font-size: 15px;">
+                <strong>3時間経営は「サボり」ではなく「最適化」</strong><br>
+                <span style="font-size: 13px; color: #a0a0a0;">時間を最大化することで、本当に重要なことに集中できる環境を作りましょう</span>
+            </p>
+        </div>
+
+        <div class="page-footer">
+            <span>1日3時間経営の作り方</span>
+            <span>4 / 4</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI業務自動化マップ</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.7;
+            font-size: 10pt;
+        }
+
+        .page {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #6366f1;
+        }
+
+        .header h1 {
+            font-size: 22pt;
+            color: #1e1b4b;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 11pt;
+            color: #666;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: #1e1b4b;
+            margin: 20px 0 12px;
+            padding: 8px 15px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        h3 {
+            font-size: 12pt;
+            color: #1e1b4b;
+            margin: 15px 0 8px;
+            padding-left: 10px;
+            border-left: 4px solid #6366f1;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #f0f0ff, #fff);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+        }
+
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .task-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            background: #fff;
+        }
+
+        .task-card.high {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #ecfdf5, #fff);
+        }
+
+        .task-card.medium {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, #fffbeb, #fff);
+        }
+
+        .task-card.low {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #fef2f2, #fff);
+        }
+
+        .task-title {
+            font-weight: bold;
+            font-size: 10pt;
+            margin-bottom: 5px;
+        }
+
+        .task-desc {
+            font-size: 9pt;
+            color: #666;
+        }
+
+        .task-tools {
+            font-size: 8pt;
+            color: #6366f1;
+            margin-top: 5px;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 8pt;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .priority-high {
+            background: #10b981;
+            color: #fff;
+        }
+
+        .priority-medium {
+            background: #f59e0b;
+            color: #fff;
+        }
+
+        .priority-low {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background: #1e1b4b;
+            color: #fff;
+        }
+
+        .table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .automation-level {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        .level-bar {
+            flex: 1;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .level-fill {
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .level-fill.high {
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        .level-fill.medium {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        .level-fill.low {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+
+        .tool-box {
+            border: 2px solid #6366f1;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .tool-header {
+            background: #6366f1;
+            color: #fff;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+
+        .tool-content {
+            padding: 15px;
+        }
+
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: #f8f8f8;
+            border-radius: 5px;
+        }
+
+        .tool-icon {
+            font-size: 16pt;
+        }
+
+        .tool-name {
+            font-size: 9pt;
+        }
+
+        .key-point {
+            background: linear-gradient(90deg, #fef3c7, #fff);
+            padding: 12px;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0;
+            font-size: 10pt;
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .checklist li {
+            padding: 6px 0 6px 25px;
+            position: relative;
+            font-size: 10pt;
+        }
+
+        .checklist li::before {
+            content: "□";
+            position: absolute;
+            left: 0;
+            color: #6366f1;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            color: #888;
+            font-size: 9pt;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="page">
+        <div class="header">
+            <h1>AI業務自動化マップ</h1>
+            <p class="subtitle">あなたのビジネスの「どこを」「何で」自動化できるか一目でわかる</p>
+        </div>
+
+        <div class="intro-box">
+            <p><strong>このマップの使い方：</strong></p>
+            <p>1. 各業務領域を見て、現在手動で行っている作業を特定<br>
+            2. 自動化の優先度（緑→黄→赤）を確認<br>
+            3. 推奨ツールを使って、優先度の高いものから自動化を開始</p>
+        </div>
+
+        <h2>1. 集客・マーケティング領域</h2>
+
+        <div class="task-grid">
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">SNS投稿の作成</div>
+                <div class="task-desc">テキスト・画像・キャプション生成</div>
+                <div class="task-tools">→ ChatGPT, Claude, Canva AI</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">ブログ記事の作成</div>
+                <div class="task-desc">SEO記事の下書き・構成作成</div>
+                <div class="task-tools">→ Claude, Notion AI</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">メルマガ/LINE配信</div>
+                <div class="task-desc">配信文作成・ステップ構築</div>
+                <div class="task-tools">→ ChatGPT + 配信ツール</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">広告クリエイティブ</div>
+                <div class="task-desc">バナー・コピー作成</div>
+                <div class="task-tools">→ Midjourney, DALL-E, Claude</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">競合リサーチ</div>
+                <div class="task-desc">競合の動向・戦略分析</div>
+                <div class="task-tools">→ Claude + Web検索</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">動画撮影・編集</div>
+                <div class="task-desc">人が話す動画は自動化困難</div>
+                <div class="task-tools">→ 外注推奨</div>
+            </div>
+        </div>
+
+        <h2>2. セールス領域</h2>
+
+        <div class="task-grid">
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">提案書・見積書作成</div>
+                <div class="task-desc">テンプレートからの自動生成</div>
+                <div class="task-tools">→ Claude + Notion</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">FAQ対応</div>
+                <div class="task-desc">よくある質問への自動回答</div>
+                <div class="task-tools">→ ChatGPT, チャットボット</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">セールススクリプト作成</div>
+                <div class="task-desc">商談用トーク台本</div>
+                <div class="task-tools">→ Claude</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">フォローアップメール</div>
+                <div class="task-desc">商談後のフォロー文面</div>
+                <div class="task-tools">→ ChatGPT + CRM連携</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">商談・クロージング</div>
+                <div class="task-desc">高額商品は人が対応</div>
+                <div class="task-tools">→ 人材育成推奨</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">価格交渉</div>
+                <div class="task-desc">判断が必要な交渉</div>
+                <div class="task-tools">→ 人が対応</div>
+            </div>
+        </div>
+
+        <h2>3. サービス提供領域</h2>
+
+        <div class="task-grid">
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">マニュアル作成</div>
+                <div class="task-desc">手順書・ガイドの作成</div>
+                <div class="task-tools">→ Claude, Notion AI</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">レポート・資料作成</div>
+                <div class="task-desc">定型レポートの自動生成</div>
+                <div class="task-tools">→ Claude + スプレッドシート</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">教材コンテンツ作成</div>
+                <div class="task-desc">テキスト教材・スライド</div>
+                <div class="task-tools">→ Claude + Gamma</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">顧客へのフィードバック</div>
+                <div class="task-desc">添削・アドバイス文面</div>
+                <div class="task-tools">→ Claude（下書き）</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">1on1セッション</div>
+                <div class="task-desc">個別対応は人が必須</div>
+                <div class="task-tools">→ グループ化で効率化</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">複雑な問題解決</div>
+                <div class="task-desc">専門判断が必要</div>
+                <div class="task-tools">→ 人が対応</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page">
+        <h2>4. 顧客管理領域</h2>
+
+        <div class="task-grid">
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">予約・スケジュール管理</div>
+                <div class="task-desc">予約受付の完全自動化</div>
+                <div class="task-tools">→ Calendly, TimeRex</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">リマインド送信</div>
+                <div class="task-desc">予約前の自動リマインド</div>
+                <div class="task-tools">→ 予約ツール連携</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">顧客情報入力</div>
+                <div class="task-desc">フォーム→CRM自動連携</div>
+                <div class="task-tools">→ Zapier, Make</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">問い合わせ対応</div>
+                <div class="task-desc">初期対応の自動化</div>
+                <div class="task-tools">→ チャットボット</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">顧客分析</div>
+                <div class="task-desc">購買傾向・離脱予測</div>
+                <div class="task-tools">→ CRM + AI分析</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">クレーム対応</div>
+                <div class="task-desc">感情を伴う対応は人</div>
+                <div class="task-tools">→ 人が対応</div>
+            </div>
+        </div>
+
+        <h2>5. 財務・経理領域</h2>
+
+        <div class="task-grid">
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">請求書発行</div>
+                <div class="task-desc">定型請求の自動発行</div>
+                <div class="task-tools">→ freee, MFクラウド</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">経費精算・記帳</div>
+                <div class="task-desc">レシート読取→自動仕訳</div>
+                <div class="task-tools">→ freee, MFクラウド</div>
+            </div>
+            <div class="task-card high">
+                <span class="priority-badge priority-high">優先度：高</span>
+                <div class="task-title">入金確認</div>
+                <div class="task-desc">銀行連携で自動照合</div>
+                <div class="task-tools">→ 会計ソフト連携</div>
+            </div>
+            <div class="task-card medium">
+                <span class="priority-badge priority-medium">優先度：中</span>
+                <div class="task-title">レポート作成</div>
+                <div class="task-desc">月次レポートの自動生成</div>
+                <div class="task-tools">→ 会計ソフト + Claude</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">税務判断</div>
+                <div class="task-desc">専門判断は税理士</div>
+                <div class="task-tools">→ 税理士連携</div>
+            </div>
+            <div class="task-card low">
+                <span class="priority-badge priority-low">優先度：低</span>
+                <div class="task-title">資金調達</div>
+                <div class="task-desc">交渉・判断は人</div>
+                <div class="task-tools">→ 人が対応</div>
+            </div>
+        </div>
+
+        <h2>AI自動化の優先順位マトリクス</h2>
+
+        <table class="table">
+            <tr>
+                <th>優先度</th>
+                <th>特徴</th>
+                <th>代表的な業務</th>
+                <th>推奨アクション</th>
+            </tr>
+            <tr>
+                <td style="background: #10b981; color: #fff;">高（緑）</td>
+                <td>定型的・繰り返し・大量</td>
+                <td>SNS投稿、請求書、予約管理</td>
+                <td><strong>今すぐ自動化</strong></td>
+            </tr>
+            <tr>
+                <td style="background: #f59e0b; color: #fff;">中（黄）</td>
+                <td>半定型・判断が少し必要</td>
+                <td>提案書、レポート、広告作成</td>
+                <td><strong>AI補助で効率化</strong></td>
+            </tr>
+            <tr>
+                <td style="background: #ef4444; color: #fff;">低（赤）</td>
+                <td>高度な判断・感情が必要</td>
+                <td>商談、クレーム、税務判断</td>
+                <td><strong>人が対応（外注検討）</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page">
+        <h2>おすすめAIツール一覧</h2>
+
+        <div class="tool-box">
+            <div class="tool-header">文章生成・編集</div>
+            <div class="tool-content">
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-icon">🤖</span>
+                        <div class="tool-name"><strong>ChatGPT</strong><br>汎用的な文章生成</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">🧠</span>
+                        <div class="tool-name"><strong>Claude</strong><br>長文・分析に強い</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">📝</span>
+                        <div class="tool-name"><strong>Notion AI</strong><br>ドキュメント内で使える</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">✍️</span>
+                        <div class="tool-name"><strong>Jasper</strong><br>マーケティング特化</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-box">
+            <div class="tool-header">画像・デザイン生成</div>
+            <div class="tool-content">
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-icon">🎨</span>
+                        <div class="tool-name"><strong>Midjourney</strong><br>高品質な画像生成</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">🖼️</span>
+                        <div class="tool-name"><strong>DALL-E 3</strong><br>ChatGPT内で使える</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">🎯</span>
+                        <div class="tool-name"><strong>Canva AI</strong><br>デザイン作成</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">📊</span>
+                        <div class="tool-name"><strong>Gamma</strong><br>プレゼン資料作成</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-box">
+            <div class="tool-header">自動化・連携</div>
+            <div class="tool-content">
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-icon">⚡</span>
+                        <div class="tool-name"><strong>Zapier</strong><br>ツール間の自動連携</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">🔄</span>
+                        <div class="tool-name"><strong>Make</strong><br>複雑な自動化フロー</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">📅</span>
+                        <div class="tool-name"><strong>Calendly</strong><br>予約の自動化</div>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-icon">💬</span>
+                        <div class="tool-name"><strong>Chatbot</strong><br>問い合わせ対応</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>自動化開始のチェックリスト</h2>
+
+        <div class="key-point">
+            <strong>Step 1: 現状把握（1週間）</strong>
+            <ul class="checklist">
+                <li>1週間の全作業を記録する</li>
+                <li>各作業の所要時間を計測する</li>
+                <li>「定型」「半定型」「非定型」に分類する</li>
+            </ul>
+        </div>
+
+        <div class="key-point">
+            <strong>Step 2: 優先順位決定（1日）</strong>
+            <ul class="checklist">
+                <li>このマップと照らし合わせる</li>
+                <li>「高」の中で最も時間を取られている3つを選ぶ</li>
+                <li>使用するツールを決定する</li>
+            </ul>
+        </div>
+
+        <div class="key-point">
+            <strong>Step 3: 実装（2週間〜）</strong>
+            <ul class="checklist">
+                <li>1つ目のツールを導入・設定する</li>
+                <li>1週間使って効果を検証する</li>
+                <li>問題なければ2つ目に進む</li>
+            </ul>
+        </div>
+
+        <h2>自動化による時間削減の目安</h2>
+
+        <table class="table">
+            <tr>
+                <th>自動化する業務</th>
+                <th>Before</th>
+                <th>After</th>
+                <th>削減時間/週</th>
+            </tr>
+            <tr>
+                <td>SNS投稿作成</td>
+                <td>5時間/週</td>
+                <td>1時間/週</td>
+                <td><strong>4時間削減</strong></td>
+            </tr>
+            <tr>
+                <td>ブログ記事作成</td>
+                <td>8時間/本</td>
+                <td>2時間/本</td>
+                <td><strong>6時間削減</strong></td>
+            </tr>
+            <tr>
+                <td>請求書発行</td>
+                <td>2時間/月</td>
+                <td>10分/月</td>
+                <td><strong>1.8時間削減</strong></td>
+            </tr>
+            <tr>
+                <td>予約管理</td>
+                <td>3時間/週</td>
+                <td>0時間/週</td>
+                <td><strong>3時間削減</strong></td>
+            </tr>
+            <tr>
+                <td>提案書作成</td>
+                <td>2時間/件</td>
+                <td>30分/件</td>
+                <td><strong>1.5時間削減</strong></td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            <p>このマップを活用して、あなたのビジネスの自動化を進めてください。</p>
+            <p>© 吉田塾 - AI業務自動化マップ</p>
+        </div>
+    </div>
+</body>
+</html>
