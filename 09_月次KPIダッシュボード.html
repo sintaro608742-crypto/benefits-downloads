@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月次KPIダッシュボード - 重要指標を一目で把握するワークシート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            padding: 15mm;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .page-header .page-num {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Meta Info */
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .meta-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid #3b82f6;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        /* Section Styles */
+        h2 {
+            font-size: 15px;
+            color: #1a1a2e;
+            padding: 10px 15px;
+            background: #f0f0f0;
+            border-left: 4px solid #3b82f6;
+            margin: 18px 0 12px;
+        }
+
+        h3 {
+            font-size: 13px;
+            color: #3b82f6;
+            margin: 12px 0 8px;
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .kpi-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .kpi-card.primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+        }
+
+        .kpi-card.success {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+
+        .kpi-card.warning {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+
+        .kpi-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .kpi-card.primary .kpi-label {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .kpi-value {
+            min-height: 35px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .kpi-card.primary .kpi-value {
+            border-color: rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .kpi-unit {
+            font-size: 10px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .kpi-card.primary .kpi-unit {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 11px;
+        }
+
+        .data-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 8px 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        .data-table .row-header {
+            background: #f5f5f5;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .data-table .editable {
+            min-height: 25px;
+        }
+
+        .data-table .highlight {
+            background: #fef3c7;
+        }
+
+        /* Comparison */
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .comparison-item {
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .comparison-item.target {
+            background: #eff6ff;
+            border: 1px solid #3b82f6;
+        }
+
+        .comparison-item.actual {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+        }
+
+        .comparison-item.gap {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+        }
+
+        .comparison-label {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .comparison-value {
+            min-height: 30px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Notes */
+        .notes-section {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .notes-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 10px;
+        }
+
+        .notes-area {
+            width: 100%;
+            min-height: 60px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: #eff6ff;
+            border: 1px solid #3b82f6;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 11px;
+            margin: 15px 0;
+        }
+
+        .tip-box strong {
+            color: #3b82f6;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: white; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: 売上・利益KPI -->
+    <div class="page">
+        <div class="page-header">
+            <h1>📊 月次KPIダッシュボード</h1>
+            <span class="page-num">1 / 2</span>
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-item">
+                <span class="meta-label">対象月:</span>
+                <div class="meta-input"></div>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">記入日:</span>
+                <div class="meta-input"></div>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">記入者:</span>
+                <div class="meta-input"></div>
+            </div>
+        </div>
+
+        <h2>💰 売上・利益KPI</h2>
+
+        <div class="kpi-grid">
+            <div class="kpi-card primary">
+                <div class="kpi-label">月間売上</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">円</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">粗利益</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">円</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">粗利益率</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">営業利益</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">円</div>
+            </div>
+        </div>
+
+        <h3>売上目標との比較</h3>
+        <div class="comparison-row">
+            <div class="comparison-item target">
+                <div class="comparison-label">目標売上</div>
+                <div class="comparison-value"></div>
+            </div>
+            <div class="comparison-item actual">
+                <div class="comparison-label">実績売上</div>
+                <div class="comparison-value"></div>
+            </div>
+            <div class="comparison-item gap">
+                <div class="comparison-label">達成率</div>
+                <div class="comparison-value"></div>
+            </div>
+        </div>
+
+        <h2>👥 集客・顧客KPI</h2>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">新規リード数</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">件</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">商談数</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">件</div>
+            </div>
+            <div class="kpi-card success">
+                <div class="kpi-label">成約数</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">件</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">成約率</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">%</div>
+            </div>
+        </div>
+
+        <h3>顧客単価</h3>
+        <table class="data-table">
+            <tr>
+                <th style="width:25%">指標</th>
+                <th style="width:25%">今月</th>
+                <th style="width:25%">先月</th>
+                <th style="width:25%">前年同月</th>
+            </tr>
+            <tr>
+                <td class="row-header">平均顧客単価</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">最高単価</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">LTV（顧客生涯価値）</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <h2>📢 マーケティングKPI</h2>
+
+        <table class="data-table">
+            <tr>
+                <th>チャネル</th>
+                <th>流入数</th>
+                <th>リード獲得数</th>
+                <th>CVR</th>
+                <th>CPA</th>
+            </tr>
+            <tr>
+                <td class="row-header">SNS</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">広告</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">SEO/検索</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">紹介</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header highlight">合計</td>
+                <td class="editable highlight"></td>
+                <td class="editable highlight"></td>
+                <td class="editable highlight"></td>
+                <td class="editable highlight"></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Page 2: 運営・コストKPI -->
+    <div class="page">
+        <div class="page-header">
+            <h1>📊 月次KPIダッシュボード</h1>
+            <span class="page-num">2 / 2</span>
+        </div>
+
+        <h2>💼 運営・稼働KPI</h2>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">稼働時間</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">時間</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">時給換算</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">円/時</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">コンテンツ制作数</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">本</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">商品/サービス提供数</div>
+                <div class="kpi-value"></div>
+                <div class="kpi-unit">件</div>
+            </div>
+        </div>
+
+        <h2>💸 コスト・経費KPI</h2>
+
+        <table class="data-table">
+            <tr>
+                <th>費目</th>
+                <th>予算</th>
+                <th>実績</th>
+                <th>差異</th>
+                <th>備考</th>
+            </tr>
+            <tr>
+                <td class="row-header">広告費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">外注費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">ツール/システム費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header">その他経費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header highlight">合計</td>
+                <td class="editable highlight"></td>
+                <td class="editable highlight"></td>
+                <td class="editable highlight"></td>
+                <td class="editable highlight"></td>
+            </tr>
+        </table>
+
+        <h2>📈 重要トレンド（3ヶ月推移）</h2>
+
+        <table class="data-table">
+            <tr>
+                <th>指標</th>
+                <th>2ヶ月前</th>
+                <th>先月</th>
+                <th>今月</th>
+                <th>トレンド</th>
+            </tr>
+            <tr>
+                <td class="row-header">売上</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable">↑ / → / ↓</td>
+            </tr>
+            <tr>
+                <td class="row-header">利益率</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable">↑ / → / ↓</td>
+            </tr>
+            <tr>
+                <td class="row-header">リード数</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable">↑ / → / ↓</td>
+            </tr>
+            <tr>
+                <td class="row-header">成約率</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable">↑ / → / ↓</td>
+            </tr>
+        </table>
+
+        <h2>✅ 今月の振り返り＆来月のアクション</h2>
+
+        <div class="notes-section">
+            <div class="notes-title">📌 今月の成果・良かった点</div>
+            <div class="notes-area"></div>
+        </div>
+
+        <div class="notes-section">
+            <div class="notes-title">⚠️ 今月の課題・改善点</div>
+            <div class="notes-area"></div>
+        </div>
+
+        <div class="notes-section">
+            <div class="notes-title">🎯 来月の重点アクション（3つ以内）</div>
+            <div class="notes-area"></div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 活用のコツ：</strong>毎月同じ日（例：月末や翌月1日）に記入する習慣をつけましょう。数字を追い続けることで、改善ポイントが見えてきます。
+        </div>
+    </div>
+</body>
+</html>

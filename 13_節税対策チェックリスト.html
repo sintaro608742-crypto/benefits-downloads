@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>節税対策チェックリスト - 起業家が知るべき合法的節税テクニック</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            padding: 25mm 20mm;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #22c55e, #10b981, #22c55e);
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .cover h1 {
+            font-size: 38px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+
+        .target-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+            max-width: 500px;
+        }
+
+        .target-box h3 {
+            color: #22c55e;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .target-box ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .target-box li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .target-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+        }
+
+        /* Content Pages */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(16, 185, 129, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 .icon {
+            font-size: 26px;
+        }
+
+        h3 {
+            font-size: 17px;
+            color: #22c55e;
+            margin: 18px 0 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        .intro-text {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 18px;
+            margin-bottom: 22px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Checklist */
+        .checklist-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .checklist-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 12px;
+        }
+
+        .checklist-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #22c55e;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item-content {
+            flex: 1;
+        }
+
+        .checklist-item-title {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        .checklist-item-desc {
+            font-size: 11px;
+            color: #a0a0a0;
+        }
+
+        /* Savings Badge */
+        .savings-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 8px;
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        .warning-box h4 {
+            color: #ef4444;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            font-size: 12px;
+        }
+
+        .warning-box li {
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .warning-box li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        .tip-box h4 {
+            color: #3b82f6;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-box ul {
+            list-style: none;
+            font-size: 12px;
+        }
+
+        .tip-box li {
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .tip-box li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+        }
+
+        /* Stats Grid */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 18px 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .stat-value {
+            font-size: 26px;
+            font-weight: bold;
+            color: #22c55e;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 10px;
+            color: #f59e0b;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+        }
+
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover">
+        <div class="cover-icon">💰</div>
+        <h1>節税対策<br>チェックリスト</h1>
+        <p class="cover-subtitle">起業家が知るべき合法的節税テクニック<br>〜 月収100万超えからの賢いお金の守り方 〜</p>
+
+        <div class="target-box">
+            <h3>📋 このチェックリストでわかること</h3>
+            <ul>
+                <li>見落としがちな経費項目</li>
+                <li>個人事業主の節税テクニック</li>
+                <li>法人化を検討すべきタイミング</li>
+                <li>税理士に相談すべき項目</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>節税対策チェックリスト</span>
+            <span>1 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 2: Expense Check -->
+    <div class="page">
+        <h2><span class="icon">📝</span>経費計上チェックリスト</h2>
+
+        <div class="intro-text">
+            <p>「これは経費にならない」と思い込んで見落としている項目がないか確認しましょう。適正な経費計上は最も基本的な節税です。</p>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">💼 事業関連経費</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">ホームオフィスの家賃按分<span class="savings-badge">年10-50万円</span></div>
+                        <div class="checklist-item-desc">自宅の一部を事務所として使用している場合、面積比で按分可能</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">光熱費・通信費の按分<span class="savings-badge">年5-15万円</span></div>
+                        <div class="checklist-item-desc">電気代、インターネット代、携帯電話代の事業使用分</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">書籍・教材・セミナー費</div>
+                        <div class="checklist-item-desc">事業に関連する学習費用は全額経費</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">サブスクリプション・ツール費</div>
+                        <div class="checklist-item-desc">SaaS、クラウドサービス、業務ツールの月額費用</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">🚗 交通・移動関連</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">交通費（電車・タクシー・飛行機）</div>
+                        <div class="checklist-item-desc">打ち合わせ、セミナー参加等の移動費用</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">車両関連費の按分<span class="savings-badge">年10-30万円</span></div>
+                        <div class="checklist-item-desc">ガソリン代、駐車場代、車検代の事業使用分</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">出張時の宿泊費・日当</div>
+                        <div class="checklist-item-desc">遠方での仕事時の宿泊費と食事代</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">🍽️ 交際費・会議費</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">打ち合わせ時のカフェ代・飲食代</div>
+                        <div class="checklist-item-desc">1人5,000円以下は会議費として経費計上可能</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">取引先への贈答品</div>
+                        <div class="checklist-item-desc">お中元、お歳暮、手土産など</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>節税対策チェックリスト</span>
+            <span>2 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 3: Tax Saving Strategies -->
+    <div class="page">
+        <h2><span class="icon">🎯</span>節税戦略チェックリスト</h2>
+
+        <div class="checklist-section">
+            <div class="checklist-title">💡 所得控除の活用</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">青色申告特別控除（65万円）<span class="savings-badge">節税10-20万円</span></div>
+                        <div class="checklist-item-desc">電子申告＋複式簿記で最大65万円控除</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">小規模企業共済<span class="savings-badge">年最大84万円控除</span></div>
+                        <div class="checklist-item-desc">掛金全額が所得控除、退職金代わりにもなる</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">iDeCo（個人型確定拠出年金）<span class="savings-badge">年最大81.6万円控除</span></div>
+                        <div class="checklist-item-desc">掛金全額が所得控除、老後資金の準備にも</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">経営セーフティ共済<span class="savings-badge">年最大240万円経費</span></div>
+                        <div class="checklist-item-desc">掛金は全額経費、40ヶ月以上で全額戻る</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">📊 青色申告の特典</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">青色専従者給与</div>
+                        <div class="checklist-item-desc">家族への給与を経費計上可能（届出必要）</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">損失の繰越控除（3年間）</div>
+                        <div class="checklist-item-desc">赤字を翌年以降の黒字と相殺可能</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">30万円未満の資産の一括経費</div>
+                        <div class="checklist-item-desc">少額減価償却資産の特例（年間300万円まで）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat-item">
+                <div class="stat-value">65万</div>
+                <div class="stat-label">青色申告<br>特別控除（最大）</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">84万</div>
+                <div class="stat-label">小規模企業共済<br>年間上限</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">240万</div>
+                <div class="stat-label">セーフティ共済<br>年間上限</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">81.6万</div>
+                <div class="stat-label">iDeCo<br>年間上限（個人事業主）</div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>節税対策チェックリスト</span>
+            <span>3 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 4: Corporation & Professional -->
+    <div class="page">
+        <h2><span class="icon">🏢</span>法人化・専門家活用</h2>
+
+        <div class="checklist-section">
+            <div class="checklist-title">⚖️ 法人化検討チェック</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">年間所得が800万円を超えている</div>
+                        <div class="checklist-item-desc">このラインを超えると法人税の方が有利になる可能性</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">売上が1,000万円を超えそう</div>
+                        <div class="checklist-item-desc">消費税の課税事業者になる前に法人化を検討</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">社会的信用が必要になってきた</div>
+                        <div class="checklist-item-desc">取引先の要件で法人が必要な場合</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <h4>💡 法人化のメリット</h4>
+            <ul>
+                <li>役員報酬で所得分散が可能</li>
+                <li>退職金を経費として準備できる</li>
+                <li>生命保険の活用幅が広がる</li>
+                <li>赤字の繰越が10年間に延長</li>
+                <li>社会保険に加入できる</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ 絶対にやってはいけないこと</h4>
+            <ul>
+                <li>私的な支出を経費にする（脱税）</li>
+                <li>領収書の改ざん・偽造</li>
+                <li>売上の除外・隠し</li>
+                <li>架空経費の計上</li>
+                <li>無申告・期限後申告の放置</li>
+            </ul>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">👨‍💼 税理士に相談すべき項目</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">年間売上500万円を超えた</div>
+                        <div class="checklist-item-desc">このタイミングで顧問税理士を検討</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">法人化の判断</div>
+                        <div class="checklist-item-desc">シミュレーションを依頼して比較</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">消費税の課税事業者になる前</div>
+                        <div class="checklist-item-desc">インボイス制度への対応も含めて相談</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ 注意：本チェックリストは一般的な情報提供を目的としたものであり、税務アドバイスではありません。具体的な節税対策については、必ず税理士等の専門家にご相談ください。税制は改正される可能性があるため、最新情報をご確認ください。
+        </div>
+
+        <div class="page-footer">
+            <span>節税対策チェックリスト</span>
+            <span>4 / 4</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外注先選定チェックリスト - 失敗しない業務委託パートナーの選び方</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            padding: 25mm 20mm;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .cover h1 {
+            font-size: 38px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+
+        .target-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+            max-width: 500px;
+        }
+
+        .target-box h3 {
+            color: #3b82f6;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .target-box ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .target-box li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .target-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+        }
+
+        /* Content Pages */
+        h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 .icon {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #3b82f6;
+            margin: 20px 0 12px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        .intro-text {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Checklist */
+        .checklist-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .checklist-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+        }
+
+        .checklist-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #3b82f6;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item-content {
+            flex: 1;
+        }
+
+        .checklist-item-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .checklist-item-desc {
+            font-size: 12px;
+            color: #a0a0a0;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #ef4444;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            font-size: 13px;
+        }
+
+        .warning-box li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .warning-box li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-box h4 {
+            color: #22c55e;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-box ul {
+            list-style: none;
+            font-size: 13px;
+        }
+
+        .tip-box li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tip-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+        }
+
+        /* Score Section */
+        .score-guide {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .score-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .score-item.good {
+            border: 1px solid rgba(34, 197, 94, 0.5);
+        }
+
+        .score-item.normal {
+            border: 1px solid rgba(245, 158, 11, 0.5);
+        }
+
+        .score-item.bad {
+            border: 1px solid rgba(239, 68, 68, 0.5);
+        }
+
+        .score-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .score-item.good .score-value { color: #22c55e; }
+        .score-item.normal .score-value { color: #f59e0b; }
+        .score-item.bad .score-value { color: #ef4444; }
+
+        .score-label {
+            font-size: 12px;
+            color: #a0a0a0;
+        }
+
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+        }
+
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover">
+        <div class="cover-icon">👥</div>
+        <h1>外注先選定<br>チェックリスト</h1>
+        <p class="cover-subtitle">失敗しない業務委託パートナーの選び方<br>〜 月収100万超え起業家のためのアウトソーシング戦略 〜</p>
+
+        <div class="target-box">
+            <h3>📋 このチェックリストでわかること</h3>
+            <ul>
+                <li>失敗しない外注先の見極めポイント</li>
+                <li>発注前に確認すべき必須項目</li>
+                <li>契約時のリスク回避チェック</li>
+                <li>外注コスト最適化の判断基準</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>外注先選定チェックリスト</span>
+            <span>1 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 2: Pre-Selection -->
+    <div class="page">
+        <h2><span class="icon">🔍</span>発注前チェックリスト</h2>
+
+        <div class="intro-text">
+            <p>外注で失敗する原因の80%は「発注前の準備不足」です。このセクションのチェックを完了してから発注を進めてください。</p>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">📝 業務定義チェック</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">業務範囲を明文化した</div>
+                        <div class="checklist-item-desc">「何を」「どこまで」やってもらうか、具体的に書き出しましたか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">成果物の定義を明確にした</div>
+                        <div class="checklist-item-desc">納品物の形式、品質基準、数量などを具体的に定義しましたか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">期限・マイルストーンを設定した</div>
+                        <div class="checklist-item-desc">最終納期だけでなく、中間確認ポイントも設定しましたか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">予算上限を決めた</div>
+                        <div class="checklist-item-desc">追加費用が発生した場合の上限額を設定しましたか？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">💡 自社準備チェック</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">必要な資料・素材を用意した</div>
+                        <div class="checklist-item-desc">ロゴ、テキスト、画像など、必要なアセットを準備しましたか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">社内の確認フローを決めた</div>
+                        <div class="checklist-item-desc">誰が確認・承認するか、レスポンス期限を決めましたか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">コミュニケーション手段を決めた</div>
+                        <div class="checklist-item-desc">連絡手段（Slack、メール等）と返信期限を設定しましたか？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>外注先選定チェックリスト</span>
+            <span>2 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 3: Partner Selection -->
+    <div class="page">
+        <h2><span class="icon">✅</span>外注先評価チェックリスト</h2>
+
+        <div class="checklist-section">
+            <div class="checklist-title">🎯 実績・スキル確認</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">類似案件の実績を確認した</div>
+                        <div class="checklist-item-desc">同じ業界・同じ規模の案件を過去に経験していますか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">ポートフォリオの品質を確認した</div>
+                        <div class="checklist-item-desc">成果物のクオリティがあなたの期待水準に達していますか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">評価・レビューを確認した</div>
+                        <div class="checklist-item-desc">過去のクライアントからの評価を確認しましたか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">テスト発注を検討した</div>
+                        <div class="checklist-item-desc">いきなり大量発注せず、小さな案件でテストしますか？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist-section">
+            <div class="checklist-title">🤝 コミュニケーション確認</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">レスポンス速度を確認した</div>
+                        <div class="checklist-item-desc">問い合わせへの返信は24時間以内に来ましたか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">質問への回答が的確だった</div>
+                        <div class="checklist-item-desc">こちらの質問の意図を正しく理解し、回答していますか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">提案力を確認した</div>
+                        <div class="checklist-item-desc">言われたことだけでなく、改善提案をしてくれますか？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ こんな外注先は要注意</h4>
+            <ul>
+                <li>返信が極端に遅い（24時間以上かかる）</li>
+                <li>料金が相場より著しく安い</li>
+                <li>契約書なしでの作業を提案する</li>
+                <li>実績やポートフォリオを見せたがらない</li>
+                <li>質問に対して曖昧な回答をする</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>外注先選定チェックリスト</span>
+            <span>3 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 4: Contract & Risk -->
+    <div class="page">
+        <h2><span class="icon">📄</span>契約・リスク管理チェック</h2>
+
+        <div class="checklist-section">
+            <div class="checklist-title">📋 契約書確認項目</div>
+            <div class="checklist-items">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">著作権・知的財産権の帰属</div>
+                        <div class="checklist-item-desc">成果物の権利が発注者に移転することを明記していますか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">秘密保持条項（NDA）</div>
+                        <div class="checklist-item-desc">機密情報の取り扱いについて規定していますか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">修正・変更対応の条件</div>
+                        <div class="checklist-item-desc">修正回数の上限や追加料金の発生条件を明記していますか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">キャンセル・解約条件</div>
+                        <div class="checklist-item-desc">途中解約時の精算方法を規定していますか？</div>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <div class="checklist-item-content">
+                        <div class="checklist-item-title">納品遅延時のペナルティ</div>
+                        <div class="checklist-item-desc">納期遅延時の対応（減額、キャンセル等）を規定していますか？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <h4>💡 長期パートナーシップのコツ</h4>
+            <ul>
+                <li>良い仕事をしてくれたら感謝の言葉を伝える</li>
+                <li>フィードバックは具体的かつ建設的に</li>
+                <li>継続案件は優遇条件を提示する</li>
+                <li>定期的に報酬の見直しを行う</li>
+                <li>お互いの時間を尊重する姿勢を示す</li>
+            </ul>
+        </div>
+
+        <h3>📊 外注先評価スコアガイド</h3>
+        <div class="score-guide">
+            <div class="score-item good">
+                <div class="score-value">8-10点</div>
+                <div class="score-label">優良パートナー<br>継続発注OK</div>
+            </div>
+            <div class="score-item normal">
+                <div class="score-value">5-7点</div>
+                <div class="score-label">要検討<br>テスト発注推奨</div>
+            </div>
+            <div class="score-item bad">
+                <div class="score-value">0-4点</div>
+                <div class="score-label">発注見送り<br>他を検討</div>
+            </div>
+        </div>
+
+        <p style="font-size: 12px; color: #888; margin-top: 20px;">
+            ※各チェック項目を1点として計算。実績・スキル（4項目）とコミュニケーション（3項目）の合計で評価してください。
+        </p>
+
+        <div class="page-footer">
+            <span>外注先選定チェックリスト</span>
+            <span>4 / 4</span>
+        </div>
+    </div>
+</body>
+</html>

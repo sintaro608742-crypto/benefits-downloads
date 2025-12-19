@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャッシュフロー管理テンプレート - 資金繰りを見える化するワークシート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            padding: 15mm;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .page-header .page-num {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Meta Info */
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .meta-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid #22c55e;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        /* Section Styles */
+        h2 {
+            font-size: 15px;
+            color: #1a1a2e;
+            padding: 10px 15px;
+            background: #f0f0f0;
+            border-left: 4px solid #22c55e;
+            margin: 18px 0 12px;
+        }
+
+        h3 {
+            font-size: 13px;
+            color: #22c55e;
+            margin: 12px 0 8px;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .summary-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .summary-card.income {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            color: white;
+            border: none;
+        }
+
+        .summary-card.expense {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            border: none;
+        }
+
+        .summary-card.balance {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+        }
+
+        .summary-label {
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        .summary-card.income .summary-label,
+        .summary-card.expense .summary-label,
+        .summary-card.balance .summary-label {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .summary-value {
+            min-height: 35px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .summary-card.income .summary-value,
+        .summary-card.expense .summary-value,
+        .summary-card.balance .summary-value {
+            border-color: rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .summary-unit {
+            font-size: 10px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .summary-card.income .summary-unit,
+        .summary-card.expense .summary-unit,
+        .summary-card.balance .summary-unit {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Tables */
+        .cf-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 11px;
+        }
+
+        .cf-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 8px 6px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .cf-table td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: center;
+        }
+
+        .cf-table .row-header {
+            background: #f5f5f5;
+            font-weight: 600;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .cf-table .editable {
+            min-height: 22px;
+        }
+
+        .cf-table .total-row {
+            background: #fef3c7;
+            font-weight: bold;
+        }
+
+        .cf-table .income-row {
+            background: #f0fdf4;
+        }
+
+        .cf-table .expense-row {
+            background: #fef2f2;
+        }
+
+        .cf-table .balance-row {
+            background: #eff6ff;
+            font-weight: bold;
+        }
+
+        /* Monthly Flow */
+        .month-header {
+            font-size: 10px;
+            padding: 5px 3px;
+        }
+
+        /* Notes */
+        .notes-section {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .notes-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .notes-area {
+            width: 100%;
+            min-height: 50px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        /* Warning & Tip */
+        .warning-box {
+            background: #fef2f2;
+            border: 1px solid #ef4444;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 11px;
+            margin: 15px 0;
+        }
+
+        .warning-box strong {
+            color: #ef4444;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 11px;
+            margin: 15px 0;
+        }
+
+        .tip-box strong {
+            color: #22c55e;
+        }
+
+        /* Fixed Cost Table */
+        .cost-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .cost-section {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .cost-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #22c55e;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+        }
+
+        .cost-name {
+            font-size: 12px;
+        }
+
+        .cost-value {
+            width: 100px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            text-align: right;
+            font-size: 12px;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: white; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: 月次キャッシュフロー -->
+    <div class="page">
+        <div class="page-header">
+            <h1>💵 キャッシュフロー管理テンプレート</h1>
+            <span class="page-num">1 / 2</span>
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-item">
+                <span class="meta-label">対象期間:</span>
+                <div class="meta-input"></div>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">記入日:</span>
+                <div class="meta-input"></div>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">記入者:</span>
+                <div class="meta-input"></div>
+            </div>
+        </div>
+
+        <h2>📊 今月のサマリー</h2>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-label">月初残高</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">円</div>
+            </div>
+            <div class="summary-card income">
+                <div class="summary-label">収入合計</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">円</div>
+            </div>
+            <div class="summary-card expense">
+                <div class="summary-label">支出合計</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">円</div>
+            </div>
+            <div class="summary-card balance">
+                <div class="summary-label">月末残高</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">円</div>
+            </div>
+        </div>
+
+        <h2>📈 6ヶ月キャッシュフロー予測</h2>
+
+        <table class="cf-table">
+            <tr>
+                <th style="width:16%">項目</th>
+                <th class="month-header">1ヶ月目</th>
+                <th class="month-header">2ヶ月目</th>
+                <th class="month-header">3ヶ月目</th>
+                <th class="month-header">4ヶ月目</th>
+                <th class="month-header">5ヶ月目</th>
+                <th class="month-header">6ヶ月目</th>
+            </tr>
+            <tr class="income-row">
+                <td class="row-header">売上入金</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="income-row">
+                <td class="row-header">その他収入</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="total-row">
+                <td class="row-header">収入合計</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="expense-row">
+                <td class="row-header">固定費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="expense-row">
+                <td class="row-header">変動費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="expense-row">
+                <td class="row-header">広告費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="expense-row">
+                <td class="row-header">外注費</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="expense-row">
+                <td class="row-header">その他支出</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="total-row">
+                <td class="row-header">支出合計</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="balance-row">
+                <td class="row-header">月次収支</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr class="balance-row">
+                <td class="row-header">月末残高</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <div class="warning-box">
+            <strong>⚠️ 資金ショート警告ライン：</strong>月末残高が固定費の2ヶ月分を下回ったら要注意。3ヶ月分以上を維持することを推奨します。
+        </div>
+    </div>
+
+    <!-- Page 2: 固定費・変動費管理 -->
+    <div class="page">
+        <div class="page-header">
+            <h1>💵 キャッシュフロー管理テンプレート</h1>
+            <span class="page-num">2 / 2</span>
+        </div>
+
+        <h2>🔒 固定費・変動費の内訳</h2>
+
+        <div class="cost-grid">
+            <div class="cost-section">
+                <div class="cost-title">📌 固定費（毎月発生）</div>
+                <div class="cost-item">
+                    <span class="cost-name">家賃/オフィス費</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">通信費（携帯・ネット）</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">サブスク/ツール費</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">保険料</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">顧問料（税理士等）</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">その他固定費</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item" style="background:#fef3c7; margin-top:10px; padding:10px; border-radius:5px;">
+                    <span class="cost-name"><strong>固定費合計</strong></span>
+                    <input type="text" class="cost-value" placeholder="円" style="font-weight:bold;">
+                </div>
+            </div>
+
+            <div class="cost-section">
+                <div class="cost-title">📊 変動費（売上連動）</div>
+                <div class="cost-item">
+                    <span class="cost-name">決済手数料</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">外注費（制作等）</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">広告費</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">交通費</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">接待・交際費</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item">
+                    <span class="cost-name">その他変動費</span>
+                    <input type="text" class="cost-value" placeholder="円">
+                </div>
+                <div class="cost-item" style="background:#fef3c7; margin-top:10px; padding:10px; border-radius:5px;">
+                    <span class="cost-name"><strong>変動費合計</strong></span>
+                    <input type="text" class="cost-value" placeholder="円" style="font-weight:bold;">
+                </div>
+            </div>
+        </div>
+
+        <h2>🎯 重要指標</h2>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-label">損益分岐点売上</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">円/月</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">運転資金</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">ヶ月分</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">固定費率</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">%</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">変動費率</div>
+                <div class="summary-value"></div>
+                <div class="summary-unit">%</div>
+            </div>
+        </div>
+
+        <h2>📅 入金・支払いスケジュール</h2>
+
+        <table class="cf-table">
+            <tr>
+                <th style="width:30%">項目</th>
+                <th style="width:20%">金額</th>
+                <th style="width:25%">予定日</th>
+                <th style="width:25%">備考</th>
+            </tr>
+            <tr>
+                <td class="row-header income-row">入金予定①</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header income-row">入金予定②</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header income-row">入金予定③</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header expense-row">支払予定①</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header expense-row">支払予定②</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+            <tr>
+                <td class="row-header expense-row">支払予定③</td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+                <td class="editable"></td>
+            </tr>
+        </table>
+
+        <div class="notes-section">
+            <div class="notes-title">📝 資金繰りメモ・対策</div>
+            <div class="notes-area"></div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 キャッシュフロー改善のコツ：</strong>
+            ①入金サイクルを短くする（前払い、分割払いの導入）
+            ②支払いサイクルを長くする（クレジットカード活用）
+            ③固定費を定期的に見直す
+            ④売上が立つ前に支出しない
+        </div>
+    </div>
+</body>
+</html>

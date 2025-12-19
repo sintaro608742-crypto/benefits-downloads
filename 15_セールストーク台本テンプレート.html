@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セールストーク台本テンプレート - 成約率を高める商談の型</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px;
+            padding: 25mm 20mm;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #8b5cf6, #ec4899, #8b5cf6);
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .cover h1 {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+
+        .target-box {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+            max-width: 500px;
+        }
+
+        .target-box h3 {
+            color: #8b5cf6;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .target-box ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .target-box li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .target-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #8b5cf6;
+        }
+
+        /* Content Pages */
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(236, 72, 153, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 .icon {
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: #8b5cf6;
+            margin: 15px 0 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .intro-text {
+            background: rgba(236, 72, 153, 0.1);
+            border-left: 4px solid #ec4899;
+            padding: 15px;
+            margin-bottom: 18px;
+            border-radius: 0 8px 8px 0;
+            font-size: 12px;
+        }
+
+        /* Script Section */
+        .script-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+
+        .script-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .script-number {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .script-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #ec4899;
+        }
+
+        .script-time {
+            margin-left: auto;
+            background: rgba(139, 92, 246, 0.2);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            color: #8b5cf6;
+        }
+
+        .script-content {
+            padding-left: 38px;
+        }
+
+        .script-goal {
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            font-size: 11px;
+        }
+
+        .script-goal strong {
+            color: #8b5cf6;
+        }
+
+        /* Talk Examples */
+        .talk-example {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+            border-left: 3px solid #ec4899;
+        }
+
+        .talk-label {
+            font-size: 10px;
+            color: #ec4899;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .talk-text {
+            font-size: 12px;
+            line-height: 1.7;
+            color: #d0d0d0;
+        }
+
+        .talk-text .highlight {
+            background: rgba(236, 72, 153, 0.2);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .tip-box h4 {
+            color: #22c55e;
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tip-box ul {
+            list-style: none;
+            font-size: 11px;
+        }
+
+        .tip-box li {
+            padding: 3px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .tip-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning-box h4 {
+            color: #ef4444;
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            font-size: 11px;
+        }
+
+        .warning-box li {
+            padding: 3px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .warning-box li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+
+        /* Objection Handling */
+        .objection-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+        }
+
+        .objection-q {
+            font-size: 12px;
+            color: #f59e0b;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .objection-a {
+            font-size: 11px;
+            color: #d0d0d0;
+            padding-left: 20px;
+            border-left: 2px solid #22c55e;
+        }
+
+        /* Flow Chart */
+        .flow-section {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            gap: 8px;
+        }
+
+        .flow-item {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .flow-item::after {
+            content: '→';
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b5cf6;
+            font-size: 14px;
+        }
+
+        .flow-item:last-child::after {
+            display: none;
+        }
+
+        .flow-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .flow-label {
+            font-size: 10px;
+            color: #a0a0a0;
+        }
+
+        .flow-time {
+            font-size: 9px;
+            color: #8b5cf6;
+            margin-top: 3px;
+        }
+
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+        }
+
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover">
+        <div class="cover-icon">🎤</div>
+        <h1>セールストーク<br>台本テンプレート</h1>
+        <p class="cover-subtitle">成約率を高める商談の型<br>〜 月収100万超え起業家のためのクロージング技術 〜</p>
+
+        <div class="target-box">
+            <h3>📋 このテンプレートでできること</h3>
+            <ul>
+                <li>商談の流れを完全に把握できる</li>
+                <li>各フェーズで話すべき内容がわかる</li>
+                <li>よくある反論への対処法を習得</li>
+                <li>自然にクロージングできる型を獲得</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>セールストーク台本テンプレート</span>
+            <span>1 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 2: Opening & Rapport -->
+    <div class="page">
+        <h2><span class="icon">🤝</span>オープニング＆ラポール構築</h2>
+
+        <div class="intro-text">
+            商談の成否は最初の5分で決まります。信頼関係を構築してから本題に入りましょう。
+        </div>
+
+        <div class="flow-section">
+            <div class="flow-item">
+                <div class="flow-icon">👋</div>
+                <div class="flow-label">挨拶</div>
+                <div class="flow-time">1分</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-icon">☕</div>
+                <div class="flow-label">アイス<br>ブレイク</div>
+                <div class="flow-time">3分</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-icon">📋</div>
+                <div class="flow-label">アジェンダ<br>共有</div>
+                <div class="flow-time">1分</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-icon">👂</div>
+                <div class="flow-label">ヒアリング</div>
+                <div class="flow-time">15分</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-icon">💡</div>
+                <div class="flow-label">提案</div>
+                <div class="flow-time">15分</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-icon">🎯</div>
+                <div class="flow-label">クロージング</div>
+                <div class="flow-time">10分</div>
+            </div>
+        </div>
+
+        <div class="script-section">
+            <div class="script-header">
+                <div class="script-number">1</div>
+                <div class="script-title">挨拶・自己紹介</div>
+                <div class="script-time">約1分</div>
+            </div>
+            <div class="script-content">
+                <div class="script-goal"><strong>ゴール：</strong>相手に安心感を与え、話を聞く姿勢を作ってもらう</div>
+                <div class="talk-example">
+                    <div class="talk-label">台本例</div>
+                    <div class="talk-text">
+                        「本日はお時間いただきありがとうございます。<span class="highlight">〇〇</span>と申します。<br>
+                        今日は<span class="highlight">45分ほど</span>お時間をいただいて、〇〇さんのお悩みをお聞きした上で、<br>
+                        私がお役に立てるかどうかをお伝えできればと思います。<br>
+                        まず、〇〇さんのことを教えていただけますか？」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="script-section">
+            <div class="script-header">
+                <div class="script-number">2</div>
+                <div class="script-title">アイスブレイク</div>
+                <div class="script-time">約3分</div>
+            </div>
+            <div class="script-content">
+                <div class="script-goal"><strong>ゴール：</strong>相手の緊張をほぐし、自然な会話ができる関係を作る</div>
+                <div class="talk-example">
+                    <div class="talk-label">台本例（事前リサーチを活かす）</div>
+                    <div class="talk-text">
+                        「SNS拝見しました。<span class="highlight">〇〇の投稿</span>、すごく共感しました！<br>
+                        あれは実体験からでしょうか？」<br><br>
+                        「〇〇さんのお仕事、<span class="highlight">すごく興味深い</span>んですが、<br>
+                        どういったきっかけで始められたんですか？」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <h4>💡 ラポール構築のポイント</h4>
+            <ul>
+                <li>相手の名前を会話中に2-3回呼ぶ</li>
+                <li>相槌は「うんうん」より「なるほど」「そうなんですね」</li>
+                <li>相手の話すスピードに合わせる（ペーシング）</li>
+                <li>質問には必ずリアクションしてから次の質問へ</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>セールストーク台本テンプレート</span>
+            <span>2 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 3: Hearing & Problem -->
+    <div class="page">
+        <h2><span class="icon">👂</span>ヒアリング＆問題の深掘り</h2>
+
+        <div class="script-section">
+            <div class="script-header">
+                <div class="script-number">3</div>
+                <div class="script-title">現状ヒアリング</div>
+                <div class="script-time">約5分</div>
+            </div>
+            <div class="script-content">
+                <div class="script-goal"><strong>ゴール：</strong>相手の現状と課題を正確に把握する</div>
+                <div class="talk-example">
+                    <div class="talk-label">台本例</div>
+                    <div class="talk-text">
+                        「今、〇〇に関して<span class="highlight">一番困っていること</span>は何ですか？」<br><br>
+                        「それは<span class="highlight">いつ頃から</span>感じていますか？」<br><br>
+                        「今まで<span class="highlight">何か対策</span>はされましたか？<br>
+                        その結果はいかがでしたか？」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="script-section">
+            <div class="script-header">
+                <div class="script-number">4</div>
+                <div class="script-title">理想の確認</div>
+                <div class="script-time">約5分</div>
+            </div>
+            <div class="script-content">
+                <div class="script-goal"><strong>ゴール：</strong>相手が本当に手に入れたい未来を明確にする</div>
+                <div class="talk-example">
+                    <div class="talk-label">台本例</div>
+                    <div class="talk-text">
+                        「もしその問題が解決したら、<span class="highlight">どうなっていたい</span>ですか？」<br><br>
+                        「具体的に<span class="highlight">数字で言うと</span>、どのくらいを目指していますか？」<br><br>
+                        「それは<span class="highlight">いつまでに</span>達成したいですか？」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="script-section">
+            <div class="script-header">
+                <div class="script-number">5</div>
+                <div class="script-title">ギャップの認識</div>
+                <div class="script-time">約5分</div>
+            </div>
+            <div class="script-content">
+                <div class="script-goal"><strong>ゴール：</strong>現状と理想のギャップを相手自身に言語化してもらう</div>
+                <div class="talk-example">
+                    <div class="talk-label">台本例</div>
+                    <div class="talk-text">
+                        「今のお話を整理すると、<br>
+                        現状は<span class="highlight">〇〇</span>で、理想は<span class="highlight">△△</span>ということですね。<br><br>
+                        このギャップを埋めるのに、<br>
+                        <span class="highlight">一番のハードル</span>は何だと思いますか？」<br><br>
+                        「もしこのまま何もしなかったら、<br>
+                        <span class="highlight">半年後、1年後</span>はどうなっていると思いますか？」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ ヒアリングのNG例</h4>
+            <ul>
+                <li>相手の話を遮って自分の話をする</li>
+                <li>「でも」「しかし」で否定から入る</li>
+                <li>すぐに解決策を提示しようとする</li>
+                <li>Yes/Noで答えられる質問ばかりする</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>セールストーク台本テンプレート</span>
+            <span>3 / 4</span>
+        </div>
+    </div>
+
+    <!-- Page 4: Proposal & Closing -->
+    <div class="page">
+        <h2><span class="icon">🎯</span>提案＆クロージング</h2>
+
+        <div class="script-section">
+            <div class="script-header">
+                <div class="script-number">6</div>
+                <div class="script-title">提案</div>
+                <div class="script-time">約10分</div>
+            </div>
+            <div class="script-content">
+                <div class="script-goal"><strong>ゴール：</strong>相手の言葉を使って、解決策を提示する</div>
+                <div class="talk-example">
+                    <div class="talk-label">台本例</div>
+                    <div class="talk-text">
+                        「〇〇さんのお話を聞いて、<br>
+                        <span class="highlight">私がお役に立てる</span>と思いました。<br><br>
+                        先ほどおっしゃっていた<span class="highlight">「△△」という課題</span>に対して、<br>
+                        私の<span class="highlight">〇〇サービス</span>では〜〜〜ができます。<br><br>
+                        実際に<span class="highlight">同じ状況だった□□さん</span>は、<br>
+                        3ヶ月で〇〇を達成されました。」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="script-section">
+            <div class="script-header">
+                <div class="script-number">7</div>
+                <div class="script-title">クロージング</div>
+                <div class="script-time">約10分</div>
+            </div>
+            <div class="script-content">
+                <div class="script-goal"><strong>ゴール：</strong>決断を促し、次のアクションを明確にする</div>
+                <div class="talk-example">
+                    <div class="talk-label">テストクロージング</div>
+                    <div class="talk-text">
+                        「ここまでの内容で、<span class="highlight">何か気になる点</span>はありますか？」
+                    </div>
+                </div>
+                <div class="talk-example">
+                    <div class="talk-label">本クロージング</div>
+                    <div class="talk-text">
+                        「〇〇さんが<span class="highlight">〇月までに△△を達成する</span>ために、<br>
+                        一緒に進めていきませんか？」<br><br>
+                        「<span class="highlight">いつ頃</span>からスタートできそうですか？」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>💬 よくある反論への切り返し</h3>
+
+        <div class="objection-item">
+            <div class="objection-q">😰 「価格が高い」と言われたら</div>
+            <div class="objection-a">「確かに安くはないですよね。ちなみに、〇〇さんにとって"高い"というのは、予算的に厳しいということでしょうか？それとも価値に対して、という意味でしょうか？」</div>
+        </div>
+
+        <div class="objection-item">
+            <div class="objection-q">😰 「検討します」と言われたら</div>
+            <div class="objection-a">「ありがとうございます。ちなみに、何を一番検討されたいですか？もしよければ、その点について今一緒に考えさせてください。」</div>
+        </div>
+
+        <div class="objection-item">
+            <div class="objection-q">😰 「今じゃなくていい」と言われたら</div>
+            <div class="objection-a">「わかります。ちなみに、"今じゃない"とお感じになる一番の理由は何でしょうか？」</div>
+        </div>
+
+        <div class="tip-box">
+            <h4>💡 クロージング成功の鉄則</h4>
+            <ul>
+                <li>クロージング後は黙る（沈黙に耐える）</li>
+                <li>決断を急かさず、考える時間を与える</li>
+                <li>「No」でも関係を壊さない姿勢を見せる</li>
+                <li>次のアクションは必ず明確にする</li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span>セールストーク台本テンプレート</span>
+            <span>4 / 4</span>
+        </div>
+    </div>
+</body>
+</html>
