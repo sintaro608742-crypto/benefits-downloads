@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>料金改定の告知テンプレート - 値上げを円滑に伝える技術</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ヘッダー */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        /* セクション */
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        /* テンプレートボックス */
+        .template-box {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .template-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .template-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+
+        .template-tag {
+            background: rgba(14, 165, 233, 0.2);
+            color: #0ea5e9;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .template-content {
+            color: #cbd5e1;
+            font-size: 15px;
+            white-space: pre-wrap;
+        }
+
+        .placeholder {
+            background: rgba(14, 165, 233, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+
+        /* 解説ボックス */
+        .explanation {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .explanation-title {
+            color: #10b981;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .explanation-content {
+            color: #6ee7b7;
+            font-size: 14px;
+        }
+
+        /* チェックリスト */
+        .checklist {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #0ea5e9;
+            font-size: 18px;
+        }
+
+        /* 注意事項 */
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-title {
+            color: #f59e0b;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .warning-content {
+            color: #fbbf24;
+            font-size: 14px;
+        }
+
+        /* ヒント */
+        .tip-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-title {
+            color: #10b981;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tip-content {
+            color: #6ee7b7;
+            font-size: 14px;
+        }
+
+        /* タイムライン */
+        .timeline {
+            margin: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-left: 2px solid rgba(14, 165, 233, 0.3);
+            margin-left: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 24px;
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            min-width: 100px;
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .timeline-content h4 {
+            color: #f1f5f9;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* フッター */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* 印刷対応 */
+        @media print {
+            body {
+                background: white;
+                color: #1e293b;
+            }
+
+            .template-box {
+                border: 1px solid #e2e8f0;
+                background: white;
+            }
+
+            .placeholder {
+                background: #e0f2fe;
+                color: #0369a1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .template-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <div class="badge">B-RANK BENEFIT ㉒</div>
+            <h1>料金改定の告知テンプレート</h1>
+            <p>値上げを円滑に伝え、顧客との信頼関係を維持する技術</p>
+        </div>
+
+        <!-- 料金改定の基本原則 -->
+        <div class="section">
+            <h2 class="section-title">料金改定を成功させる5つの原則</h2>
+
+            <ul class="checklist">
+                <li>
+                    <span class="check-icon">1</span>
+                    <div>
+                        <strong>十分な事前告知をする</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">最低1ヶ月前、できれば2〜3ヶ月前に告知</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">2</span>
+                    <div>
+                        <strong>値上げの理由を誠実に伝える</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">品質向上、市場相場、コスト増など正直に</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">3</span>
+                    <div>
+                        <strong>既存顧客への配慮を示す</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">据え置き期間、特別価格などの優遇措置</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">4</span>
+                    <div>
+                        <strong>価値の向上を具体的に伝える</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">何が良くなるのかを明確に説明</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">5</span>
+                    <div>
+                        <strong>感謝の気持ちを忘れない</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">これまでのご愛顧への感謝を必ず伝える</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- テンプレート1: メール告知（既存顧客向け） -->
+        <div class="section">
+            <h2 class="section-title">テンプレート① 既存顧客向けメール</h2>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <div class="template-title">料金改定のお知らせ（既存顧客向け）</div>
+                    <div class="template-tag">メール用</div>
+                </div>
+
+                <div class="template-content">件名：【重要】<span class="placeholder">[サービス名]</span>料金改定のお知らせ
+
+<span class="placeholder">[お客様名]</span> 様
+
+いつも<span class="placeholder">[サービス名]</span>をご利用いただき、
+誠にありがとうございます。
+
+<span class="placeholder">[あなたの名前]</span>です。
+
+本日は、<span class="placeholder">[●年●月]</span>からの料金改定について
+ご案内させていただきます。
+
+【改定内容】
+━━━━━━━━━━━━━━━━━━━━
+現行価格：<span class="placeholder">[現在の価格]</span>円/月
+　　↓
+新価格：<span class="placeholder">[新しい価格]</span>円/月
+━━━━━━━━━━━━━━━━━━━━
+
+【改定の理由】
+<span class="placeholder">[改定理由を2〜3行で記載]</span>
+
+例：
+・サービス品質の向上（新機能の追加、サポート体制の強化）
+・原材料費・運営コストの上昇への対応
+・市場相場との適正化
+
+【既存のお客様への特別対応】
+日頃よりご愛顧いただいている<span class="placeholder">[お客様名]</span>様には、
+感謝の気持ちを込めて、以下の特別対応をさせていただきます。
+
+◆ <span class="placeholder">[●年●月]</span>までは現行価格を据え置き
+◆ 年間契約への切り替えで<span class="placeholder">[●]</span>%オフ
+◆ ご紹介者様への特別割引
+
+【適用開始日】
+<span class="placeholder">[適用開始日]</span>
+
+ご不明な点がございましたら、
+お気軽にお問い合わせください。
+
+今後ともより良いサービスの提供に努めてまいりますので、
+引き続きご愛顧賜りますようお願い申し上げます。
+
+<span class="placeholder">[署名]</span></div>
+            </div>
+
+            <div class="explanation">
+                <div class="explanation-title">ポイント解説</div>
+                <div class="explanation-content">
+                    ・件名に「重要」を入れて開封率を上げる<br>
+                    ・改定内容を一目で分かるように視覚化<br>
+                    ・既存顧客への特別対応を明記して離脱を防ぐ<br>
+                    ・感謝の気持ちを冒頭と末尾で伝える
+                </div>
+            </div>
+        </div>
+
+        <!-- テンプレート2: LINE/SNS告知 -->
+        <div class="section">
+            <h2 class="section-title">テンプレート② LINE/SNS用（短文版）</h2>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <div class="template-title">料金改定のお知らせ（SNS向け短文）</div>
+                    <div class="template-tag">LINE/SNS用</div>
+                </div>
+
+                <div class="template-content"><span class="placeholder">[お客様名]</span>さん
+
+いつもありがとうございます😊
+
+大切なお知らせです。
+
+<span class="placeholder">[●月●日]</span>より、
+<span class="placeholder">[サービス名]</span>の料金を
+改定させていただくことになりました。
+
+【変更内容】
+<span class="placeholder">[現価格]</span>円 → <span class="placeholder">[新価格]</span>円
+
+ただし、
+<span class="placeholder">[お客様名]</span>さんは
+<span class="placeholder">[特典内容]</span>
+
+詳細は個別にご案内しますので、
+ご質問があればお気軽にどうぞ！
+
+<span class="placeholder">[あなたの名前]</span></div>
+            </div>
+
+            <div class="explanation">
+                <div class="explanation-title">ポイント解説</div>
+                <div class="explanation-content">
+                    ・LINEは短く、読みやすく<br>
+                    ・絵文字は1〜2個程度に抑える<br>
+                    ・既存顧客への特典を必ず明記<br>
+                    ・詳細は個別対応することで関係性を維持
+                </div>
+            </div>
+        </div>
+
+        <!-- テンプレート3: Webサイト/LP用 -->
+        <div class="section">
+            <h2 class="section-title">テンプレート③ Webサイト掲載用</h2>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <div class="template-title">料金改定のお知らせ（Web掲載用）</div>
+                    <div class="template-tag">HP/LP用</div>
+                </div>
+
+                <div class="template-content">━━━━━━━━━━━━━━━━━━━━━━━━━━
+【重要】料金改定のお知らせ
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+平素より<span class="placeholder">[サービス名]</span>をご愛顧いただき、
+誠にありがとうございます。
+
+この度、<span class="placeholder">[●年●月●日]</span>より、
+サービス料金を下記のとおり改定させていただくことになりました。
+
+■ 改定内容
+┌────────────────────────────┐
+│  現行価格  │  新価格（税込）   │
+├────────────────────────────┤
+│ <span class="placeholder">[プラン名A]</span> │ <span class="placeholder">[旧価格]</span>円 → <span class="placeholder">[新価格]</span>円 │
+│ <span class="placeholder">[プラン名B]</span> │ <span class="placeholder">[旧価格]</span>円 → <span class="placeholder">[新価格]</span>円 │
+└────────────────────────────┘
+
+■ 改定の背景
+<span class="placeholder">[改定理由を記載]</span>
+
+■ サービス品質の向上について
+今回の料金改定に伴い、以下のサービス向上を実施いたします。
+・<span class="placeholder">[向上内容1]</span>
+・<span class="placeholder">[向上内容2]</span>
+・<span class="placeholder">[向上内容3]</span>
+
+■ 適用日
+<span class="placeholder">[●年●月●日]</span>ご契約分より
+
+※<span class="placeholder">[●年●月●日]</span>までにお申し込みの方は、
+　現行価格にてご契約いただけます。
+
+ご不明な点がございましたら、下記までお問い合わせください。
+<span class="placeholder">[連絡先]</span>
+
+今後とも変わらぬご愛顧を賜りますよう、
+何卒よろしくお願い申し上げます。
+
+<span class="placeholder">[日付]</span>
+<span class="placeholder">[会社名/屋号]</span>
+<span class="placeholder">[代表者名]</span></div>
+            </div>
+        </div>
+
+        <!-- テンプレート4: 新規向けセールストーク -->
+        <div class="section">
+            <h2 class="section-title">テンプレート④ 新規顧客向けセールストーク</h2>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <div class="template-title">値上げ前の駆け込み需要を作るトーク</div>
+                    <div class="template-tag">セールス用</div>
+                </div>
+
+                <div class="template-content">【商談やセールスで使えるトーク例】
+
+「実は、<span class="placeholder">[●月●日]</span>から料金を改定することになりまして、
+今の<span class="placeholder">[現価格]</span>円が<span class="placeholder">[新価格]</span>円になります。
+
+サービスの品質向上に伴う改定なのですが、
+もし今日ご決断いただければ、現行価格でスタートできます。
+
+<span class="placeholder">[●月●日]</span>まで猶予はあるんですが、
+早めにスタートされた方が、その分早く成果が出ますし、
+<span class="placeholder">[●万]</span>円お得になりますので...
+
+いかがでしょうか？」
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【ポイント】
+・「値上げ前の今がチャンス」という緊急性を作る
+・価格だけでなく「早くスタート = 早く成果」という価値も伝える
+・金額の差を具体的に伝える
+・押し売り感を出さず、選択肢を提示する</div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">💡 値上げは「売上UP」のチャンス</div>
+                <div class="tip-content">
+                    値上げ告知は「駆け込み需要」を生むチャンス。<br>
+                    改定日の1〜2ヶ月前は、通常より成約率が上がります。<br>
+                    告知のタイミングを戦略的に使いましょう。
+                </div>
+            </div>
+        </div>
+
+        <!-- 料金改定のタイムライン -->
+        <div class="section">
+            <h2 class="section-title">料金改定の推奨タイムライン</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">3ヶ月前</div>
+                    <div class="timeline-content">
+                        <h4>価格改定の決定・準備</h4>
+                        <p>新価格の決定、告知文の準備、Webサイト更新準備</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2ヶ月前</div>
+                    <div class="timeline-content">
+                        <h4>既存顧客への事前告知</h4>
+                        <p>メール・LINE等で個別に連絡、特別対応の案内</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1ヶ月前</div>
+                    <div class="timeline-content">
+                        <h4>公式発表・Webサイト更新</h4>
+                        <p>LP・SNS等で公式発表、駆け込み需要の喚起</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2週間前</div>
+                    <div class="timeline-content">
+                        <h4>リマインド告知</h4>
+                        <p>「あと●日で値上げ」のリマインドメール/投稿</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">前日〜当日</div>
+                    <div class="timeline-content">
+                        <h4>最終告知・価格変更</h4>
+                        <p>「本日最終」の告知、価格の切り替え実施</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- よくある質問への回答例 -->
+        <div class="section">
+            <h2 class="section-title">よくある質問への回答例</h2>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <div class="template-title">Q. 「なぜ値上げするの？」</div>
+                </div>
+                <div class="template-content">A. 「サービスの品質をさらに向上させるためです。
+具体的には<span class="placeholder">[品質向上の内容]</span>を追加/強化します。
+お客様により大きな成果を出していただくための投資とお考えください。」</div>
+            </div>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <div class="template-title">Q. 「私も値上げ後の価格になるの？」</div>
+                </div>
+                <div class="template-content">A. 「ご安心ください。
+<span class="placeholder">[お客様名]</span>様はこれまでご愛顧いただいていますので、
+<span class="placeholder">[●月]</span>までは現行価格を据え置かせていただきます。
+（または）年間契約に切り替えていただければ、
+今の価格のまま継続いただけます。」</div>
+            </div>
+
+            <div class="template-box">
+                <div class="template-header">
+                    <div class="template-title">Q. 「今のプランのままでいいのに...」</div>
+                </div>
+                <div class="template-content">A. 「お気持ちはよく分かります。
+ただ、今回の改定で<span class="placeholder">[追加される価値]</span>が加わりますので、
+同じ価格でも受け取れる価値は大きくなります。
+
+もしご予算が気になるようでしたら、
+<span class="placeholder">[代替プランの提案]</span>もございますので、
+一度ご相談させてください。」</div>
+            </div>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="section">
+            <h2 class="section-title">料金改定時の注意事項</h2>
+
+            <div class="warning-box">
+                <div class="warning-title">⚠️ やってはいけないこと</div>
+                <div class="warning-content">
+                    ・突然の値上げ（告知なしで急に価格変更）<br>
+                    ・理由の説明なし（「諸般の事情により」だけでは不信感を招く）<br>
+                    ・既存顧客への配慮なし（新規と同じ扱いは離脱を招く）<br>
+                    ・過度な値上げ（一度に50%以上の値上げは要注意）<br>
+                    ・嘘の理由を伝える（後でバレると信頼を失う）
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">💡 値上げは「成長の証」</div>
+                <div class="tip-content">
+                    値上げを躊躇する必要はありません。<br>
+                    適正な価格は、あなたとお客様双方のためになります。<br>
+                    安すぎる価格は、サービス品質の維持を困難にし、<br>
+                    結果的にお客様の不利益になることもあるのです。
+                </div>
+            </div>
+        </div>
+
+        <!-- フッター -->
+        <div class="footer">
+            <p>© 2024 月収300万円起業家支援プログラム</p>
+            <p style="margin-top: 10px;">価値に見合った価格を堂々と提示しよう</p>
+        </div>
+    </div>
+</body>
+</html>

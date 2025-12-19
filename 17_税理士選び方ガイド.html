@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>税理士選び方ガイド - 月収300万円起業家のための完全マニュアル</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 60px 50px;
+            position: relative;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+        }
+
+        .page + .page {
+            border-top: 2px dashed rgba(255,255,255,0.1);
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .cover-badge {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: #000;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .cover h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+
+        .cover-features {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .cover-feature {
+            text-align: center;
+        }
+
+        .cover-feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .cover-feature-text {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Typography */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+            color: #0ea5e9;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 30px 0 15px;
+            color: #06b6d4;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #c0c0c0;
+        }
+
+        /* Intro Box */
+        .intro-box {
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .intro-box h3 {
+            margin-top: 0;
+            color: #0ea5e9;
+        }
+
+        /* Checklist */
+        .checklist {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .checklist-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #06b6d4;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .check-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #0ea5e9;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-content {
+            flex: 1;
+        }
+
+        .checklist-label {
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 4px;
+        }
+
+        .checklist-desc {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .comparison-table th {
+            background: rgba(14, 165, 233, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #0ea5e9;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #c0c0c0;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #ef4444;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-box h4 {
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        /* Stage Cards */
+        .stage-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .stage-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #000;
+        }
+
+        .stage-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e0e0e0;
+        }
+
+        /* Question List */
+        .question-list {
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .question-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+        }
+
+        .q-number {
+            background: #0ea5e9;
+            color: #000;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        .page-footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        @media print {
+            .page {
+                page-break-after: always;
+                min-height: auto;
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page cover">
+        <div class="cover-badge">PREMIUM GUIDE</div>
+        <h1>税理士選び方ガイド</h1>
+        <p class="cover-subtitle">月収300万円起業家のための<br>パートナー選定完全マニュアル</p>
+
+        <div class="cover-features">
+            <div class="cover-feature">
+                <div class="cover-feature-icon">📋</div>
+                <div class="cover-feature-text">選定基準<br>チェックリスト</div>
+            </div>
+            <div class="cover-feature">
+                <div class="cover-feature-icon">💰</div>
+                <div class="cover-feature-text">料金相場<br>比較表</div>
+            </div>
+            <div class="cover-feature">
+                <div class="cover-feature-icon">❓</div>
+                <div class="cover-feature-text">面談時の<br>質問リスト</div>
+            </div>
+        </div>
+        <span class="page-number">1 / 4</span>
+    </div>
+
+    <!-- Page 2: When & Why -->
+    <div class="page">
+        <h2>税理士が必要になるタイミング</h2>
+
+        <div class="intro-box">
+            <h3>こんな状況になったら税理士を検討</h3>
+            <p>月収100万円を超えたあたりから、税務処理の複雑さが急激に増します。以下のサインが出たら、プロの力を借りる時期です。</p>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header">
+                <div class="stage-number">1</div>
+                <div class="stage-title">売上が年間1,000万円を超えそう</div>
+            </div>
+            <p>消費税の課税事業者になる可能性。届出や経理処理が複雑化します。</p>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header">
+                <div class="stage-number">2</div>
+                <div class="stage-title">法人化を検討している</div>
+            </div>
+            <p>設立時の届出、役員報酬の設定、社会保険など専門知識が必要です。</p>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header">
+                <div class="stage-number">3</div>
+                <div class="stage-title">経理に月5時間以上使っている</div>
+            </div>
+            <p>その時間を本業に使えば、税理士費用以上の売上を作れる可能性大。</p>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header">
+                <div class="stage-number">4</div>
+                <div class="stage-title">節税の余地がありそうと感じる</div>
+            </div>
+            <p>プロのアドバイスで年間数十万円〜数百万円の節税効果も。</p>
+        </div>
+
+        <h2>税理士の種類と特徴</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>種類</th>
+                    <th>特徴</th>
+                    <th>向いている人</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>個人事務所</strong></td>
+                    <td>所長が直接対応、小回りが利く</td>
+                    <td>密なコミュニケーション重視</td>
+                </tr>
+                <tr>
+                    <td><strong>税理士法人</strong></td>
+                    <td>組織的対応、専門分野あり</td>
+                    <td>法人化後、複雑な案件</td>
+                </tr>
+                <tr>
+                    <td><strong>クラウド特化型</strong></td>
+                    <td>freee/MF対応、オンライン完結</td>
+                    <td>ITリテラシー高め、コスト重視</td>
+                </tr>
+                <tr>
+                    <td><strong>業界特化型</strong></td>
+                    <td>特定業界に強い</td>
+                    <td>EC、コンサル、飲食など</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <span class="page-number">2 / 4</span>
+    </div>
+
+    <!-- Page 3: Selection Criteria -->
+    <div class="page">
+        <h2>税理士選定チェックリスト</h2>
+
+        <div class="checklist">
+            <div class="checklist-title">必須確認項目</div>
+
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="checklist-content">
+                    <div class="checklist-label">対応可能な会計ソフト</div>
+                    <div class="checklist-desc">freee、マネーフォワード、弥生など、自分が使っているソフトに対応しているか</div>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="checklist-content">
+                    <div class="checklist-label">連絡手段と対応速度</div>
+                    <div class="checklist-desc">メール、チャット、電話。質問への回答は何営業日以内か</div>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="checklist-content">
+                    <div class="checklist-label">担当者の経験年数</div>
+                    <div class="checklist-desc">実際に対応する担当者の経験。所長以外が担当する場合は特に確認</div>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="checklist-content">
+                    <div class="checklist-label">同業種の顧問実績</div>
+                    <div class="checklist-desc">コンサル、コーチ、EC、情報商材など自分の業種の経験があるか</div>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="checklist-content">
+                    <div class="checklist-label">節税提案の姿勢</div>
+                    <div class="checklist-desc">積極的に節税アドバイスをくれるか、聞かないと教えてくれないか</div>
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="checklist-content">
+                    <div class="checklist-label">料金体系の明確さ</div>
+                    <div class="checklist-desc">月額顧問料、決算料、追加料金の発生条件が明確か</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>料金相場（個人事業〜小規模法人）</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>相場（月額）</th>
+                    <th>備考</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>顧問料（個人）</td>
+                    <td>1〜3万円</td>
+                    <td>売上規模で変動</td>
+                </tr>
+                <tr>
+                    <td>顧問料（法人）</td>
+                    <td>3〜5万円</td>
+                    <td>売上・従業員数で変動</td>
+                </tr>
+                <tr>
+                    <td>記帳代行</td>
+                    <td>+5,000〜2万円</td>
+                    <td>仕訳数による</td>
+                </tr>
+                <tr>
+                    <td>決算申告料</td>
+                    <td>月額の3〜6ヶ月分</td>
+                    <td>年1回</td>
+                </tr>
+                <tr>
+                    <td>年末調整</td>
+                    <td>1人5,000円〜</td>
+                    <td>従業員がいる場合</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tip-box">
+            <h4>コスト削減のコツ</h4>
+            <p>自分で記帳すれば月1〜2万円の削減に。クラウド会計ソフト（freee/MF）を使えば、入力作業は大幅に簡素化できます。</p>
+        </div>
+
+        <span class="page-number">3 / 4</span>
+    </div>
+
+    <!-- Page 4: Interview Questions -->
+    <div class="page">
+        <h2>面談時に聞くべき質問リスト</h2>
+
+        <div class="question-list">
+            <div class="question-item">
+                <span class="q-number">1</span>
+                <span>私と同じ業種（コンサル/コーチ/EC等）の顧問先は何社ありますか？</span>
+            </div>
+            <div class="question-item">
+                <span class="q-number">2</span>
+                <span>実際に担当してくださるのはどなたですか？お会いできますか？</span>
+            </div>
+            <div class="question-item">
+                <span class="q-number">3</span>
+                <span>質問した場合、通常何営業日以内に回答いただけますか？</span>
+            </div>
+            <div class="question-item">
+                <span class="q-number">4</span>
+                <span>節税について、どの程度積極的にアドバイスいただけますか？</span>
+            </div>
+            <div class="question-item">
+                <span class="q-number">5</span>
+                <span>法人化のタイミングはいつ頃が適切だと思われますか？</span>
+            </div>
+            <div class="question-item">
+                <span class="q-number">6</span>
+                <span>追加料金が発生するのはどのような場合ですか？</span>
+            </div>
+            <div class="question-item">
+                <span class="q-number">7</span>
+                <span>契約後、合わないと感じた場合の解約条件は？</span>
+            </div>
+            <div class="question-item">
+                <span class="q-number">8</span>
+                <span>税務調査の対応経験はありますか？その場合の費用は？</span>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h4>こんな税理士は避けるべき</h4>
+            <ul style="margin-left: 20px; color: #c0c0c0;">
+                <li>質問しても回答が遅い（3営業日以上）</li>
+                <li>節税について聞いても消極的</li>
+                <li>料金体系があいまい</li>
+                <li>ITツール（クラウド会計）に否定的</li>
+                <li>業界知識がなく話が噛み合わない</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <h4>良い税理士を見つけるルート</h4>
+            <ul style="margin-left: 20px; color: #c0c0c0;">
+                <li><strong>同業者からの紹介</strong> - 業界理解のある税理士に出会える確率高</li>
+                <li><strong>税理士紹介サービス</strong> - 税理士ドットコム、ミツモアなど</li>
+                <li><strong>会計ソフト経由</strong> - freee認定アドバイザー、MFパートナーなど</li>
+                <li><strong>商工会議所</strong> - 無料相談から関係構築</li>
+            </ul>
+        </div>
+
+        <div class="intro-box">
+            <h3>最後に：税理士は「投資」</h3>
+            <p>月3万円の顧問料でも、年間36万円。高いと感じるかもしれません。しかし、プロのアドバイスで50万円節税できれば14万円のプラス。経理に使っていた時間を本業に回せば、さらに売上アップ。税理士は「経費」ではなく「投資」です。</p>
+        </div>
+
+        <div class="page-footer">
+            <p>月収100万円→300万円 スケールアップ特典パッケージ</p>
+        </div>
+        <span class="page-number">4 / 4</span>
+    </div>
+</body>
+</html>

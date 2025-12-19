@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>決済システム比較表 - 月収300万円起業家のための最適解</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ヘッダー */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        /* セクション */
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* 比較表 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .comparison-table th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        .comparison-table th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        .comparison-table td {
+            padding: 12px 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .comparison-table tr:nth-child(even) td {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: bold;
+            color: #94a3b8;
+        }
+
+        .highlight {
+            background: rgba(14, 165, 233, 0.2) !important;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+
+        .good {
+            color: #10b981;
+        }
+
+        .neutral {
+            color: #f59e0b;
+        }
+
+        .bad {
+            color: #ef4444;
+        }
+
+        /* サービス詳細 */
+        .service-card {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .service-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 10px;
+        }
+
+        .service-tagline {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .feature-item .icon {
+            color: #0ea5e9;
+        }
+
+        /* 選び方フロー */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .flow-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .flow-content h4 {
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
+
+        .flow-content p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* 推奨パターン */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .pattern-card {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .pattern-title {
+            color: #0ea5e9;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .pattern-desc {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .pattern-recommend {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(6, 182, 212, 0.2));
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #06b6d4;
+            font-weight: bold;
+        }
+
+        /* 手数料計算 */
+        .calc-box {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .calc-title {
+            color: #f1f5f9;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .calc-row:last-child {
+            border-bottom: none;
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 2px solid #0ea5e9;
+        }
+
+        .calc-label {
+            color: #94a3b8;
+        }
+
+        .calc-value {
+            color: #f1f5f9;
+            font-weight: bold;
+        }
+
+        .calc-value.highlight {
+            color: #0ea5e9;
+            font-size: 18px;
+        }
+
+        /* チェックリスト */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #0ea5e9;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        /* 注意事項 */
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-title {
+            color: #f59e0b;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-content {
+            color: #fbbf24;
+            font-size: 14px;
+        }
+
+        /* フッター */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* 印刷対応 */
+        @media print {
+            body {
+                background: white;
+                color: #1e293b;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .section {
+                break-inside: avoid;
+                border: 1px solid #e2e8f0;
+            }
+
+            .comparison-table th {
+                background: #0ea5e9;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .pattern-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <div class="badge">B-RANK BENEFIT ⑱</div>
+            <h1>決済システム比較表</h1>
+            <p>月収300万円起業家のための最適な決済手段の選び方</p>
+        </div>
+
+        <!-- セクション1: なぜ決済システムが重要か -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                決済システムが売上を左右する理由
+            </h2>
+
+            <p style="margin-bottom: 20px; color: #94a3b8;">
+                月収100万円から300万円にスケールする過程で、決済システムの選択は
+                <strong style="color: #0ea5e9;">成約率・キャッシュフロー・顧客満足度</strong>に直結します。
+            </p>
+
+            <div class="calc-box">
+                <div class="calc-title">手数料差による年間影響額（月商300万円の場合）</div>
+                <div class="calc-row">
+                    <span class="calc-label">年間売上</span>
+                    <span class="calc-value">¥36,000,000</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">手数料 3.6% の場合</span>
+                    <span class="calc-value bad">-¥1,296,000</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">手数料 2.5% の場合</span>
+                    <span class="calc-value good">-¥900,000</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">差額（年間）</span>
+                    <span class="calc-value highlight">¥396,000 の節約</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- セクション2: 主要サービス比較表 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                主要決済サービス比較表
+            </h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">項目</th>
+                        <th>Stripe</th>
+                        <th>Square</th>
+                        <th>PayPal</th>
+                        <th>STORES決済</th>
+                        <th>Airペイ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>決済手数料</td>
+                        <td class="highlight">3.6%</td>
+                        <td>3.25%</td>
+                        <td>3.6%+40円</td>
+                        <td class="good">3.24%</td>
+                        <td class="good">3.24%</td>
+                    </tr>
+                    <tr>
+                        <td>入金サイクル</td>
+                        <td class="good">週次〜翌日</td>
+                        <td class="good">最短翌日</td>
+                        <td>3〜4日</td>
+                        <td>月2回</td>
+                        <td>月2回</td>
+                    </tr>
+                    <tr>
+                        <td>月額費用</td>
+                        <td class="good">無料</td>
+                        <td class="good">無料</td>
+                        <td class="good">無料</td>
+                        <td class="good">無料</td>
+                        <td class="good">無料</td>
+                    </tr>
+                    <tr>
+                        <td>サブスク対応</td>
+                        <td class="good">◎</td>
+                        <td class="neutral">△</td>
+                        <td class="good">○</td>
+                        <td class="bad">×</td>
+                        <td class="bad">×</td>
+                    </tr>
+                    <tr>
+                        <td>API連携</td>
+                        <td class="good">◎</td>
+                        <td class="good">○</td>
+                        <td class="good">○</td>
+                        <td class="neutral">△</td>
+                        <td class="bad">×</td>
+                    </tr>
+                    <tr>
+                        <td>対面決済</td>
+                        <td class="neutral">△</td>
+                        <td class="good">◎</td>
+                        <td class="bad">×</td>
+                        <td class="good">◎</td>
+                        <td class="good">◎</td>
+                    </tr>
+                    <tr>
+                        <td>導入の手軽さ</td>
+                        <td class="neutral">△</td>
+                        <td class="good">◎</td>
+                        <td class="good">○</td>
+                        <td class="good">◎</td>
+                        <td class="good">○</td>
+                    </tr>
+                    <tr>
+                        <td>コンサル向き</td>
+                        <td class="good">◎</td>
+                        <td class="good">○</td>
+                        <td class="neutral">△</td>
+                        <td class="bad">×</td>
+                        <td class="bad">×</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="font-size: 13px; color: #64748b; margin-top: 15px;">
+                ※2024年12月時点の情報です。最新の手数料は各社公式サイトをご確認ください。
+            </p>
+        </div>
+
+        <!-- セクション3: サービス詳細 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                サービス別詳細解説
+            </h2>
+
+            <div class="service-card">
+                <div class="service-name">Stripe（ストライプ）</div>
+                <div class="service-tagline">オンラインビジネスの定番。サブスク課金に最強</div>
+                <div class="service-features">
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>サブスク課金が簡単設定</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>入金サイクルが早い</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>API連携が豊富</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>請求書発行機能あり</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">Square（スクエア）</div>
+                <div class="service-tagline">対面・オンライン両方に対応。導入が超簡単</div>
+                <div class="service-features">
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>最短翌日入金</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>対面決済端末が優秀</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>請求書送付機能</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>POSレジ機能も無料</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">PayPal（ペイパル）</div>
+                <div class="service-tagline">海外取引・国際決済ならこれ一択</div>
+                <div class="service-features">
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>世界200カ国以上対応</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>多通貨対応</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>買い手保護制度</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">✓</span>
+                        <span>知名度・信頼度高い</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- セクション4: ビジネスモデル別おすすめ -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                ビジネスモデル別おすすめ
+            </h2>
+
+            <div class="pattern-grid">
+                <div class="pattern-card">
+                    <div class="pattern-title">コンサル・コーチング</div>
+                    <div class="pattern-desc">
+                        月額顧問契約や継続課金が中心<br>
+                        請求書発行も必要
+                    </div>
+                    <div class="pattern-recommend">
+                        おすすめ：Stripe
+                    </div>
+                </div>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">セミナー・講座</div>
+                    <div class="pattern-desc">
+                        単発の高額決済が多い<br>
+                        対面での即時決済も
+                    </div>
+                    <div class="pattern-recommend">
+                        おすすめ：Square
+                    </div>
+                </div>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">オンラインサロン</div>
+                    <div class="pattern-desc">
+                        月額サブスク課金が必須<br>
+                        会員管理との連携重要
+                    </div>
+                    <div class="pattern-recommend">
+                        おすすめ：Stripe
+                    </div>
+                </div>
+
+                <div class="pattern-card">
+                    <div class="pattern-title">物販・EC</div>
+                    <div class="pattern-desc">
+                        多数の少額決済<br>
+                        在庫管理との連携
+                    </div>
+                    <div class="pattern-recommend">
+                        おすすめ：Square / STORES
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- セクション5: 選び方フロー -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">5</span>
+                決済システム選びの判断フロー
+            </h2>
+
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-content">
+                        <h4>サブスク課金は必要？</h4>
+                        <p>月額課金や継続課金があるなら → <strong style="color: #0ea5e9;">Stripe一択</strong></p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-content">
+                        <h4>対面決済は必要？</h4>
+                        <p>セミナー会場や店舗での決済があるなら → <strong style="color: #0ea5e9;">Square</strong></p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-content">
+                        <h4>海外顧客はいる？</h4>
+                        <p>海外からの決済を受けるなら → <strong style="color: #0ea5e9;">PayPal</strong>を追加</p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">4</div>
+                    <div class="flow-content">
+                        <h4>入金サイクルは重要？</h4>
+                        <p>キャッシュフロー重視なら → <strong style="color: #0ea5e9;">Square（翌日入金）</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- セクション6: 導入前チェックリスト -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">6</span>
+                導入前チェックリスト
+            </h2>
+
+            <ul class="checklist">
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>本人確認書類の準備</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">運転免許証・マイナンバーカード等</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>事業証明書類の準備</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">開業届・登記簿謄本等</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>銀行口座情報</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">入金先の事業用口座</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>Webサイト・商品ページ</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">審査時に確認されます</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>特定商取引法に基づく表記</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">サイトに必須の記載事項</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>返金ポリシーの策定</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">トラブル防止に必須</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="warning-box">
+                <div class="warning-title">
+                    ⚠️ 審査落ちを防ぐポイント
+                </div>
+                <div class="warning-content">
+                    ・事業内容を明確に記載（「コンサルティング」だけでなく具体的に）<br>
+                    ・Webサイトに連絡先・住所を明記<br>
+                    ・商品・サービスの価格を明示<br>
+                    ・「稼げる」等の誇大表現は審査NGになりやすい
+                </div>
+            </div>
+        </div>
+
+        <!-- セクション7: 複数決済の組み合わせ -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">7</span>
+                月収300万円起業家の最適組み合わせ
+            </h2>
+
+            <div class="calc-box">
+                <div class="calc-title">推奨パターン：Stripe + Square の二刀流</div>
+                <div class="calc-row">
+                    <span class="calc-label">Stripe（メイン）</span>
+                    <span class="calc-value">サブスク課金・オンライン決済</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">Square（サブ）</span>
+                    <span class="calc-value">対面決済・急ぎの入金時</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">PayPal（オプション）</span>
+                    <span class="calc-value">海外顧客対応時のみ</span>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px; color: #94a3b8;">
+                <strong style="color: #0ea5e9;">ポイント：</strong>
+                複数の決済手段を持つことで、顧客の都合に合わせられます。
+                「クレジットカードがない」「分割にしたい」等の要望にも対応でき、
+                <strong>成約率が10〜20%向上</strong>するケースも。
+            </p>
+        </div>
+
+        <!-- フッター -->
+        <div class="footer">
+            <p>© 2024 月収300万円起業家支援プログラム</p>
+            <p style="margin-top: 10px;">このガイドは定期的に更新されます。最新情報は各社公式サイトをご確認ください。</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>契約書テンプレート集 - 月収300万円起業家のためのリスク管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ヘッダー */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        /* セクション */
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        /* 契約書テンプレート */
+        .contract-template {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .contract-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .contract-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f1f5f9;
+            margin-bottom: 10px;
+        }
+
+        .contract-subtitle {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .contract-article {
+            margin-bottom: 25px;
+        }
+
+        .article-title {
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .article-content {
+            color: #cbd5e1;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        .article-content p {
+            margin-bottom: 8px;
+        }
+
+        .placeholder {
+            background: rgba(14, 165, 233, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+
+        /* 署名欄 */
+        .signature-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .signature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .signature-box {
+            text-align: center;
+        }
+
+        .signature-label {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #64748b;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .signature-fields {
+            text-align: left;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .signature-fields p {
+            margin-bottom: 5px;
+        }
+
+        /* テンプレート選択タブ */
+        .template-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .template-tab {
+            padding: 10px 20px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 8px;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .template-tab.active {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* 注意事項 */
+        .notice-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .notice-title {
+            color: #f59e0b;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .notice-content {
+            color: #fbbf24;
+            font-size: 14px;
+        }
+
+        /* ヒント */
+        .tip-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-title {
+            color: #10b981;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tip-content {
+            color: #6ee7b7;
+            font-size: 14px;
+        }
+
+        /* チェックリスト */
+        .checklist {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #0ea5e9;
+            font-size: 18px;
+        }
+
+        /* フッター */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* 印刷対応 */
+        @media print {
+            body {
+                background: white;
+                color: #1e293b;
+            }
+
+            .contract-template {
+                border: 1px solid #e2e8f0;
+                background: white;
+            }
+
+            .placeholder {
+                background: #e0f2fe;
+                color: #0369a1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .signature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .template-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <div class="badge">B-RANK BENEFIT ㉑</div>
+            <h1>契約書テンプレート集</h1>
+            <p>月収300万円起業家のためのリスク管理ツール</p>
+        </div>
+
+        <!-- 使い方 -->
+        <div class="section">
+            <h2 class="section-title">このテンプレート集の使い方</h2>
+
+            <p style="margin-bottom: 20px; color: #94a3b8;">
+                このテンプレート集には、コンサルタント・コーチ・講師が使える
+                3種類の契約書テンプレートが含まれています。
+                <span class="placeholder">[●●]</span>の部分を自分のビジネスに合わせて書き換えてご利用ください。
+            </p>
+
+            <div class="template-tabs">
+                <div class="template-tab active">① コンサル契約書</div>
+                <div class="template-tab">② 秘密保持契約書</div>
+                <div class="template-tab">③ 業務委託契約書</div>
+            </div>
+
+            <div class="notice-box">
+                <div class="notice-title">⚠️ 重要な注意事項</div>
+                <div class="notice-content">
+                    このテンプレートは一般的な参考例です。<br>
+                    高額契約や重要な取引の場合は、必ず弁護士にレビューを依頼してください。<br>
+                    契約内容はご自身の責任で最終確認をお願いします。
+                </div>
+            </div>
+        </div>
+
+        <!-- テンプレート1: コンサルティング契約書 -->
+        <div class="section">
+            <h2 class="section-title">① コンサルティング契約書</h2>
+
+            <div class="contract-template">
+                <div class="contract-header">
+                    <div class="contract-title">コンサルティング業務委託契約書</div>
+                    <div class="contract-subtitle">Consulting Agreement</div>
+                </div>
+
+                <p style="margin-bottom: 30px; color: #cbd5e1;">
+                    <span class="placeholder">[クライアント名]</span>（以下「甲」という）と
+                    <span class="placeholder">[あなたの屋号/会社名]</span>（以下「乙」という）は、
+                    コンサルティング業務の委託について、以下のとおり契約を締結する。
+                </p>
+
+                <div class="contract-article">
+                    <div class="article-title">第1条（目的）</div>
+                    <div class="article-content">
+                        <p>甲は乙に対し、<span class="placeholder">[コンサルティングの内容]</span>に関するコンサルティング業務を委託し、乙はこれを受託する。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第2条（業務内容）</div>
+                    <div class="article-content">
+                        <p>乙が甲に提供する業務は以下の通りとする。</p>
+                        <p>1. <span class="placeholder">[具体的な業務内容1]</span></p>
+                        <p>2. <span class="placeholder">[具体的な業務内容2]</span></p>
+                        <p>3. <span class="placeholder">[具体的な業務内容3]</span></p>
+                        <p>4. その他、上記に付随する業務</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第3条（契約期間）</div>
+                    <div class="article-content">
+                        <p>本契約の有効期間は、<span class="placeholder">[開始日]</span>から<span class="placeholder">[終了日]</span>までとする。</p>
+                        <p>ただし、期間満了の1ヶ月前までに甲乙いずれからも書面による解約の申し出がない場合は、同一条件で自動的に<span class="placeholder">[更新期間]</span>延長されるものとし、以後も同様とする。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第4条（報酬）</div>
+                    <div class="article-content">
+                        <p>1. 甲は乙に対し、本業務の報酬として月額<span class="placeholder">[金額]</span>円（税別）を支払う。</p>
+                        <p>2. 報酬の支払いは、毎月末日締め、翌月<span class="placeholder">[支払日]</span>日までに、乙が指定する銀行口座への振込により行う。振込手数料は甲の負担とする。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第5条（秘密保持）</div>
+                    <div class="article-content">
+                        <p>甲及び乙は、本契約に関連して知り得た相手方の技術上又は営業上の情報を、相手方の書面による事前の承諾なく第三者に開示又は漏洩してはならない。この義務は本契約終了後も<span class="placeholder">[期間]</span>年間存続する。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第6条（成果物の帰属）</div>
+                    <div class="article-content">
+                        <p>本業務により乙が作成した成果物（資料、レポート等）の著作権は、報酬の支払い完了をもって甲に帰属する。ただし、乙が本契約締結前から有していた知的財産権及び汎用的なノウハウについては、乙に留保される。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第7条（免責事項）</div>
+                    <div class="article-content">
+                        <p>1. 乙は、本業務について善管注意義務をもって誠実に履行するが、甲の事業の成功、売上増加等の結果を保証するものではない。</p>
+                        <p>2. 乙の助言に基づく甲の意思決定及びその結果については、甲が全責任を負う。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第8条（解約）</div>
+                    <div class="article-content">
+                        <p>1. 甲又は乙は、1ヶ月前までに書面により通知することで、本契約を解約することができる。</p>
+                        <p>2. 前項により解約された場合、すでに支払われた報酬は返還しない。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第9条（合意管轄）</div>
+                    <div class="article-content">
+                        <p>本契約に関する紛争については、<span class="placeholder">[管轄地]</span>地方裁判所を第一審の専属的合意管轄裁判所とする。</p>
+                    </div>
+                </div>
+
+                <div class="signature-section">
+                    <p style="color: #94a3b8; text-align: center;">
+                        本契約の成立を証するため、本書2通を作成し、甲乙記名押印の上、各1通を保有する。
+                    </p>
+                    <p style="color: #94a3b8; text-align: center; margin-top: 20px;">
+                        <span class="placeholder">[契約締結日]</span>
+                    </p>
+
+                    <div class="signature-grid">
+                        <div class="signature-box">
+                            <div class="signature-label">甲（委託者）</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-fields">
+                                <p>住所：__________________________</p>
+                                <p>氏名：__________________________</p>
+                                <p>印</p>
+                            </div>
+                        </div>
+                        <div class="signature-box">
+                            <div class="signature-label">乙（受託者）</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-fields">
+                                <p>住所：__________________________</p>
+                                <p>屋号：__________________________</p>
+                                <p>氏名：__________________________</p>
+                                <p>印</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- テンプレート2: 秘密保持契約書 -->
+        <div class="section">
+            <h2 class="section-title">② 秘密保持契約書（NDA）</h2>
+
+            <div class="contract-template">
+                <div class="contract-header">
+                    <div class="contract-title">秘密保持契約書</div>
+                    <div class="contract-subtitle">Non-Disclosure Agreement</div>
+                </div>
+
+                <p style="margin-bottom: 30px; color: #cbd5e1;">
+                    <span class="placeholder">[開示者名]</span>（以下「甲」という）と
+                    <span class="placeholder">[受領者名]</span>（以下「乙」という）は、
+                    <span class="placeholder">[検討事項]</span>の検討（以下「本目的」という）に際し、以下のとおり秘密保持契約を締結する。
+                </p>
+
+                <div class="contract-article">
+                    <div class="article-title">第1条（秘密情報の定義）</div>
+                    <div class="article-content">
+                        <p>本契約における「秘密情報」とは、甲が乙に開示する技術上、営業上その他事業に関する一切の情報であって、開示の際に秘密である旨を明示したものをいう。ただし、以下の情報は秘密情報に含まれない。</p>
+                        <p>（1）開示の時点で既に公知となっていた情報</p>
+                        <p>（2）開示後、乙の責めに帰すべき事由によらずに公知となった情報</p>
+                        <p>（3）開示の時点で既に乙が保有していた情報</p>
+                        <p>（4）乙が正当な権限を有する第三者から秘密保持義務を負うことなく取得した情報</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第2条（秘密保持義務）</div>
+                    <div class="article-content">
+                        <p>乙は、秘密情報を本目的以外に使用してはならず、甲の書面による事前の承諾なく第三者に開示又は漏洩してはならない。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第3条（管理義務）</div>
+                    <div class="article-content">
+                        <p>乙は、秘密情報を善良なる管理者の注意をもって管理し、秘密情報への不正なアクセス、紛失、破壊、改ざん及び漏洩等を防止するために必要な措置を講じなければならない。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第4条（返還義務）</div>
+                    <div class="article-content">
+                        <p>乙は、甲の請求があった場合又は本目的が終了した場合、秘密情報及びその複製物を速やかに甲に返還又は甲の指示に従い廃棄しなければならない。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第5条（有効期間）</div>
+                    <div class="article-content">
+                        <p>本契約の有効期間は、本契約締結日から<span class="placeholder">[期間]</span>年間とする。ただし、第2条の秘密保持義務は、本契約終了後も<span class="placeholder">[期間]</span>年間存続する。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第6条（損害賠償）</div>
+                    <div class="article-content">
+                        <p>乙が本契約に違反し、甲に損害を与えた場合、乙は甲に対し、当該損害を賠償しなければならない。</p>
+                    </div>
+                </div>
+
+                <div class="signature-section">
+                    <p style="color: #94a3b8; text-align: center;">
+                        <span class="placeholder">[契約締結日]</span>
+                    </p>
+
+                    <div class="signature-grid">
+                        <div class="signature-box">
+                            <div class="signature-label">甲（開示者）</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-fields">
+                                <p>住所：__________________________</p>
+                                <p>氏名：__________________________</p>
+                            </div>
+                        </div>
+                        <div class="signature-box">
+                            <div class="signature-label">乙（受領者）</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-fields">
+                                <p>住所：__________________________</p>
+                                <p>氏名：__________________________</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- テンプレート3: 業務委託契約書（外注用） -->
+        <div class="section">
+            <h2 class="section-title">③ 業務委託契約書（外注先向け）</h2>
+
+            <div class="contract-template">
+                <div class="contract-header">
+                    <div class="contract-title">業務委託契約書</div>
+                    <div class="contract-subtitle">Service Agreement</div>
+                </div>
+
+                <p style="margin-bottom: 30px; color: #cbd5e1;">
+                    <span class="placeholder">[あなたの屋号/会社名]</span>（以下「甲」という）と
+                    <span class="placeholder">[外注先名]</span>（以下「乙」という）は、
+                    業務の委託について、以下のとおり契約を締結する。
+                </p>
+
+                <div class="contract-article">
+                    <div class="article-title">第1条（委託業務）</div>
+                    <div class="article-content">
+                        <p>甲は乙に対し、以下の業務を委託し、乙はこれを受託する。</p>
+                        <p>業務内容：<span class="placeholder">[具体的な業務内容]</span></p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第2条（納期・納品方法）</div>
+                    <div class="article-content">
+                        <p>1. 納期：<span class="placeholder">[納品日]</span></p>
+                        <p>2. 納品方法：<span class="placeholder">[納品方法（メール添付、クラウド共有等）]</span></p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第3条（報酬）</div>
+                    <div class="article-content">
+                        <p>1. 甲は乙に対し、本業務の報酬として<span class="placeholder">[金額]</span>円（税込/税別）を支払う。</p>
+                        <p>2. 支払い：納品完了後<span class="placeholder">[支払期限]</span>日以内に、乙指定の銀行口座へ振込。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第4条（著作権の帰属）</div>
+                    <div class="article-content">
+                        <p>本業務により乙が制作した成果物の著作権（著作権法第27条及び第28条の権利を含む）は、報酬の支払い完了をもって甲に譲渡される。乙は甲に対し、著作者人格権を行使しない。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第5条（秘密保持）</div>
+                    <div class="article-content">
+                        <p>乙は、本業務に関連して知り得た甲の情報を、甲の事前の承諾なく第三者に開示してはならない。この義務は契約終了後も存続する。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第6条（再委託の禁止）</div>
+                    <div class="article-content">
+                        <p>乙は、甲の書面による事前の承諾なく、本業務の全部又は一部を第三者に再委託してはならない。</p>
+                    </div>
+                </div>
+
+                <div class="contract-article">
+                    <div class="article-title">第7条（検収）</div>
+                    <div class="article-content">
+                        <p>1. 甲は、納品後<span class="placeholder">[検収期間]</span>日以内に検収を行う。</p>
+                        <p>2. 検収の結果、不備があった場合、乙は甲の指示に従い無償で修正を行う。</p>
+                    </div>
+                </div>
+
+                <div class="signature-section">
+                    <p style="color: #94a3b8; text-align: center;">
+                        <span class="placeholder">[契約締結日]</span>
+                    </p>
+
+                    <div class="signature-grid">
+                        <div class="signature-box">
+                            <div class="signature-label">甲（委託者）</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-fields">
+                                <p>住所：__________________________</p>
+                                <p>屋号：__________________________</p>
+                                <p>氏名：__________________________</p>
+                            </div>
+                        </div>
+                        <div class="signature-box">
+                            <div class="signature-label">乙（受託者）</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-fields">
+                                <p>住所：__________________________</p>
+                                <p>氏名：__________________________</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 契約締結のチェックリスト -->
+        <div class="section">
+            <h2 class="section-title">契約締結前チェックリスト</h2>
+
+            <ul class="checklist">
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>業務内容は明確に記載されているか</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">曖昧な表現は後々トラブルの原因に</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>報酬と支払い条件は明記されているか</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">金額、支払日、振込手数料の負担者</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>契約期間と解約条件は明確か</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">いつ、どうやって解約できるか</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>成果物の著作権の帰属は決まっているか</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">支払い後に譲渡？それとも許諾？</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>秘密保持の範囲と期間は適切か</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">契約終了後も守秘義務は続くか</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-icon">☐</span>
+                    <div>
+                        <strong>責任の範囲は明確か</strong>
+                        <p style="color: #94a3b8; font-size: 14px;">成果を保証するのか、しないのか</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="tip-box">
+                <div class="tip-title">💡 電子契約のすすめ</div>
+                <div class="tip-content">
+                    紙の契約書は手間がかかります。<br>
+                    <strong>CloudSign</strong>や<strong>DocuSign</strong>などの電子契約サービスを使えば、
+                    オンラインで完結し、印紙税もかかりません。<br>
+                    月数件の契約なら無料プランで十分対応できます。
+                </div>
+            </div>
+        </div>
+
+        <!-- フッター -->
+        <div class="footer">
+            <p>© 2024 月収300万円起業家支援プログラム</p>
+            <p style="margin-top: 10px;">
+                ※このテンプレートは参考例です。重要な契約は必ず専門家にご相談ください。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

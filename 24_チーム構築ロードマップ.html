@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チーム構築ロードマップ - 一人社長から組織化へ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .rank-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1em;
+        }
+
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .section h2 {
+            color: #0ea5e9;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .section h3 {
+            color: #22d3ee;
+            font-size: 1.2em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section h4 {
+            color: #67e8f9;
+            font-size: 1.05em;
+            margin: 20px 0 12px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+            color: #cbd5e1;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+            border-left: 4px solid #0ea5e9;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: #fcd34d;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .success-box p {
+            margin: 0;
+            color: #6ee7b7;
+        }
+
+        /* ロードマップタイムライン */
+        .roadmap {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #0ea5e9, #06b6d4, #22d3ee);
+        }
+
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #0ea5e9;
+            border-radius: 50%;
+            border: 3px solid #1e293b;
+        }
+
+        .roadmap-phase {
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-title {
+            color: #f1f5f9;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-content {
+            color: #94a3b8;
+            font-size: 0.95em;
+        }
+
+        /* 比較テーブル */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .comparison-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .comparison-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            color: #cbd5e1;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        /* ステップカード */
+        .step-card {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .step-title {
+            color: #f1f5f9;
+            font-size: 1.15em;
+            font-weight: bold;
+        }
+
+        .step-content {
+            color: #94a3b8;
+            padding-left: 60px;
+        }
+
+        /* タスクリスト */
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .task-item {
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .task-category {
+            color: #0ea5e9;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .task-list {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .task-list li {
+            margin-bottom: 5px;
+        }
+
+        /* 人材カード */
+        .talent-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .talent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .talent-type {
+            color: #0ea5e9;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .talent-cost {
+            color: #22d3ee;
+            font-size: 0.9em;
+        }
+
+        /* プラットフォームリスト */
+        .platform-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .platform-tag {
+            background: rgba(14, 165, 233, 0.2);
+            color: #67e8f9;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* チェックリスト */
+        .checklist {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .checklist li::before {
+            content: '□';
+            color: #0ea5e9;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        /* アクションボックス */
+        .action-box {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+            border: 2px solid #0ea5e9;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .action-box h3 {
+            color: #0ea5e9;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+
+        /* フッター */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .footer-logo {
+            font-size: 1.2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        /* 印刷用スタイル */
+        @media print {
+            body {
+                background: white;
+                color: #1e293b;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .header {
+                background: #f1f5f9;
+                border: 2px solid #0ea5e9;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .header h1 {
+                color: #0ea5e9;
+                -webkit-text-fill-color: #0ea5e9;
+            }
+
+            .section {
+                background: white;
+                border: 1px solid #e2e8f0;
+                break-inside: avoid;
+            }
+
+            .section h2 {
+                color: #0ea5e9;
+            }
+
+            p, li, td {
+                color: #334155;
+            }
+
+            .roadmap-item {
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+            }
+
+            .comparison-table th {
+                background: #0ea5e9 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.7em;
+            }
+
+            .section {
+                padding: 25px 20px;
+            }
+
+            .comparison-table {
+                font-size: 0.85em;
+            }
+
+            .roadmap {
+                padding-left: 30px;
+            }
+
+            .step-content {
+                padding-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="rank-badge">B-RANK GUIDE</div>
+            <h1>チーム構築ロードマップ</h1>
+            <p>一人社長から組織化へ - 月収300万円を目指す外注・採用戦略</p>
+        </header>
+
+        <!-- セクション1: なぜチーム化が必要か -->
+        <section class="section">
+            <h2><span class="section-number">1</span>なぜチーム化が必要なのか？</h2>
+
+            <h3>一人ビジネスの限界点</h3>
+            <p>月収100万円を超えたあたりから、多くの起業家が「時間の壁」にぶつかります。</p>
+
+            <div class="highlight-box">
+                <p><strong>一人で対応できる限界の目安：</strong><br>
+                ・クライアント数：5〜8名<br>
+                ・月間セッション数：20〜30回<br>
+                ・売上：100〜150万円/月</p>
+            </div>
+
+            <h3>チーム化のタイミング指標</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>指標</th>
+                    <th>一人で継続</th>
+                    <th>チーム化検討</th>
+                    <th>チーム化必須</th>
+                </tr>
+                <tr>
+                    <td>月商</td>
+                    <td>〜100万円</td>
+                    <td>100〜200万円</td>
+                    <td>200万円〜</td>
+                </tr>
+                <tr>
+                    <td>労働時間</td>
+                    <td>〜160時間</td>
+                    <td>160〜200時間</td>
+                    <td>200時間〜</td>
+                </tr>
+                <tr>
+                    <td>新規問い合わせ対応</td>
+                    <td>余裕あり</td>
+                    <td>ギリギリ</td>
+                    <td>断っている</td>
+                </tr>
+                <tr>
+                    <td>既存顧客フォロー</td>
+                    <td>十分</td>
+                    <td>最低限</td>
+                    <td>手が回らない</td>
+                </tr>
+                <tr>
+                    <td>新商品開発</td>
+                    <td>進んでいる</td>
+                    <td>停滞気味</td>
+                    <td>全くできない</td>
+                </tr>
+            </table>
+
+            <div class="warning-box">
+                <p><strong>注意：</strong>「忙しくなってから採用」では遅い。チーム化には3〜6ヶ月の準備期間が必要です。</p>
+            </div>
+        </section>
+
+        <!-- セクション2: チーム化ロードマップ -->
+        <section class="section">
+            <h2><span class="section-number">2</span>チーム構築5段階ロードマップ</h2>
+
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">Phase 1｜月商50〜100万円</div>
+                    <div class="roadmap-title">単発外注の活用</div>
+                    <div class="roadmap-content">
+                        デザイン、動画編集、LP制作など「成果物が明確な作業」を外注。
+                        ココナラ、クラウドワークスなどで都度発注。
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">Phase 2｜月商100〜150万円</div>
+                    <div class="roadmap-title">定期外注パートナーの確保</div>
+                    <div class="roadmap-content">
+                        信頼できる外注先を2〜3名確保し、継続的に依頼。
+                        月額固定契約で優先対応を確保する。
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">Phase 3｜月商150〜200万円</div>
+                    <div class="roadmap-title">事務アシスタント採用</div>
+                    <div class="roadmap-content">
+                        週10〜20時間のパートタイムアシスタントを採用。
+                        スケジュール管理、メール対応、請求書発行などを委任。
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">Phase 4｜月商200〜300万円</div>
+                    <div class="roadmap-title">専門スタッフ採用</div>
+                    <div class="roadmap-content">
+                        マーケティング、カスタマーサクセスなど専門領域を任せる人材を採用。
+                        業務委託または週3〜4日の契約。
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">Phase 5｜月商300万円〜</div>
+                    <div class="roadmap-title">組織体制の構築</div>
+                    <div class="roadmap-content">
+                        フルタイムスタッフ採用、役割分担の明確化、
+                        マニュアル・仕組み化の徹底。経営者として「働く」から「創る」へ。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション3: 最初に外注すべきタスク -->
+        <section class="section">
+            <h2><span class="section-number">3</span>最初に外注すべきタスクTOP10</h2>
+
+            <p>外注の優先順位は「あなたの時給×作業時間」で判断します。高単価な時間を生み出すために、まずこれらを手放しましょう。</p>
+
+            <div class="task-grid">
+                <div class="task-item">
+                    <div class="task-category">クリエイティブ系</div>
+                    <ul class="task-list">
+                        <li>SNS用画像作成</li>
+                        <li>YouTube サムネイル</li>
+                        <li>プレゼン資料デザイン</li>
+                        <li>LP・バナー制作</li>
+                    </ul>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-category">動画・音声系</div>
+                    <ul class="task-list">
+                        <li>動画編集（カット・テロップ）</li>
+                        <li>文字起こし</li>
+                        <li>ポッドキャスト編集</li>
+                    </ul>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-category">事務・管理系</div>
+                    <ul class="task-list">
+                        <li>スケジュール調整</li>
+                        <li>請求書・領収書発行</li>
+                        <li>経費精算入力</li>
+                        <li>メール一次対応</li>
+                    </ul>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-category">ライティング系</div>
+                    <ul class="task-list">
+                        <li>ブログ記事の下書き</li>
+                        <li>メルマガ下書き</li>
+                        <li>SNS投稿文作成</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <p><strong>外注してはいけないタスク：</strong><br>
+                ・顧客との直接コミュニケーション（初期段階）<br>
+                ・価格設定・契約条件の決定<br>
+                ・事業の方向性を決める意思決定<br>
+                ・あなた自身のブランディングに関わる発信</p>
+            </div>
+        </section>
+
+        <!-- セクション4: 人材の種類と選び方 -->
+        <section class="section">
+            <h2><span class="section-number">4</span>人材の種類と選び方</h2>
+
+            <div class="talent-card">
+                <div class="talent-header">
+                    <span class="talent-type">フリーランス（単発）</span>
+                    <span class="talent-cost">1案件 5,000円〜</span>
+                </div>
+                <p><strong>向いている業務：</strong>デザイン、動画編集、LP制作など成果物が明確なもの</p>
+                <p><strong>メリット：</strong>必要な時だけ依頼、初期コスト低い</p>
+                <p><strong>デメリット：</strong>毎回説明が必要、品質にばらつき</p>
+                <div class="platform-list">
+                    <span class="platform-tag">ココナラ</span>
+                    <span class="platform-tag">クラウドワークス</span>
+                    <span class="platform-tag">ランサーズ</span>
+                </div>
+            </div>
+
+            <div class="talent-card">
+                <div class="talent-header">
+                    <span class="talent-type">オンラインアシスタント（定期）</span>
+                    <span class="talent-cost">月額 3〜10万円</span>
+                </div>
+                <p><strong>向いている業務：</strong>事務作業、スケジュール管理、メール対応</p>
+                <p><strong>メリット：</strong>継続的な関係、業務理解が深まる</p>
+                <p><strong>デメリット：</strong>固定費が発生、ミスマッチリスク</p>
+                <div class="platform-list">
+                    <span class="platform-tag">フジ子さん</span>
+                    <span class="platform-tag">キャスタービズ</span>
+                    <span class="platform-tag">HELP YOU</span>
+                </div>
+            </div>
+
+            <div class="talent-card">
+                <div class="talent-header">
+                    <span class="talent-type">業務委託（専門職）</span>
+                    <span class="talent-cost">月額 10〜30万円</span>
+                </div>
+                <p><strong>向いている業務：</strong>マーケティング、ライティング、SNS運用</p>
+                <p><strong>メリット：</strong>専門性が高い、戦略から任せられる</p>
+                <p><strong>デメリット：</strong>コストが高い、見つけるのが難しい</p>
+                <div class="platform-list">
+                    <span class="platform-tag">Wantedly</span>
+                    <span class="platform-tag">YOUTRUST</span>
+                    <span class="platform-tag">紹介</span>
+                </div>
+            </div>
+
+            <div class="talent-card">
+                <div class="talent-header">
+                    <span class="talent-type">パートタイム社員</span>
+                    <span class="talent-cost">時給 1,200〜2,000円</span>
+                </div>
+                <p><strong>向いている業務：</strong>事務全般、顧客対応、オペレーション</p>
+                <p><strong>メリット：</strong>労務管理がしやすい、帰属意識</p>
+                <p><strong>デメリット：</strong>社会保険等の手続き、解雇が難しい</p>
+                <div class="platform-list">
+                    <span class="platform-tag">Indeed</span>
+                    <span class="platform-tag">タウンワーク</span>
+                    <span class="platform-tag">主婦向け求人サイト</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション5: 採用・外注の5ステップ -->
+        <section class="section">
+            <h2><span class="section-number">5</span>採用・外注を成功させる5ステップ</h2>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">業務の棚卸しと切り出し</div>
+                </div>
+                <div class="step-content">
+                    <p>1週間、自分の全作業を15分単位で記録。「自分がやるべき仕事」と「任せられる仕事」に分類します。</p>
+                    <ul>
+                        <li>記録シートを作成（日付・時間・作業内容・所要時間）</li>
+                        <li>「創造的な仕事」「判断が必要な仕事」「ルーティン作業」に分類</li>
+                        <li>ルーティン作業から優先的に外注リストへ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">マニュアル・手順書の作成</div>
+                </div>
+                <div class="step-content">
+                    <p>「自分がいなくても同じ品質でできる」状態を作ります。</p>
+                    <ul>
+                        <li>画面収録で作業手順を動画化（Loomがおすすめ）</li>
+                        <li>Notionやドキュメントで手順書を作成</li>
+                        <li>チェックリスト形式で抜け漏れを防ぐ</li>
+                        <li>「なぜそうするのか」の理由も記載</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">テスト発注・トライアル期間</div>
+                </div>
+                <div class="step-content">
+                    <p>いきなり大量の仕事を任せず、小さく始めてフィット感を確認。</p>
+                    <ul>
+                        <li>最初は1〜2件の小さなタスクから依頼</li>
+                        <li>納品物の品質・コミュニケーション・納期遵守をチェック</li>
+                        <li>3回目までに継続判断（「3回ルール」）</li>
+                        <li>違和感があれば早めに別の人を探す</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">フィードバックと関係構築</div>
+                </div>
+                <div class="step-content">
+                    <p>良い人材は「育てる」意識が大切。適切なフィードバックで成長を促します。</p>
+                    <ul>
+                        <li>良かった点を具体的に伝える（承認欲求を満たす）</li>
+                        <li>改善点は「こうしてほしい」と前向きに伝える</li>
+                        <li>週1回の定例MTG（30分）で認識をすり合わせ</li>
+                        <li>成果に応じた報酬アップで長期関係を構築</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">権限委譲と自走化</div>
+                </div>
+                <div class="step-content">
+                    <p>最終的には「任せきる」状態を目指します。</p>
+                    <ul>
+                        <li>「確認なしでOK」の範囲を段階的に広げる</li>
+                        <li>判断基準・優先順位のガイドラインを共有</li>
+                        <li>報告は「完了報告」のみでOKな状態へ</li>
+                        <li>改善提案を歓迎し、主体性を引き出す</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション6: 失敗パターンと対策 -->
+        <section class="section">
+            <h2><span class="section-number">6</span>よくある失敗パターンと対策</h2>
+
+            <h3>失敗① 丸投げしてしまう</h3>
+            <div class="highlight-box">
+                <p><strong>症状：</strong>「とりあえずやっておいて」と曖昧な指示 → 期待と違う成果物<br>
+                <strong>対策：</strong>ゴール・背景・参考例・納期を明確に。最初は過剰なくらい説明する</p>
+            </div>
+
+            <h3>失敗② 安さで選んでしまう</h3>
+            <div class="highlight-box">
+                <p><strong>症状：</strong>格安の人に依頼 → 品質が低い → 修正に時間がかかる<br>
+                <strong>対策：</strong>「安い」ではなく「費用対効果」で判断。時給換算で比較する</p>
+            </div>
+
+            <h3>失敗③ 一人に依存しすぎる</h3>
+            <div class="highlight-box">
+                <p><strong>症状：</strong>その人が抜けたら業務が止まる<br>
+                <strong>対策：</strong>重要業務は2名体制。マニュアルを残して属人化を防ぐ</p>
+            </div>
+
+            <h3>失敗④ コミュニケーション不足</h3>
+            <div class="highlight-box">
+                <p><strong>症状：</strong>認識のズレが積み重なり、大きな問題に<br>
+                <strong>対策：</strong>週1の定例MTG。Slackなどで日常的にやり取り</p>
+            </div>
+
+            <h3>失敗⑤ 自分でやった方が早いと思ってしまう</h3>
+            <div class="highlight-box">
+                <p><strong>症状：</strong>結局自分でやってしまい、外注が定着しない<br>
+                <strong>対策：</strong>最初の3ヶ月は「投資期間」と割り切る。教える時間を確保</p>
+            </div>
+        </section>
+
+        <!-- セクション7: 今週のアクションプラン -->
+        <section class="section">
+            <h2><span class="section-number">7</span>今週のアクションプラン</h2>
+
+            <div class="action-box">
+                <h3>チーム化を始める7日間プログラム</h3>
+            </div>
+
+            <ul class="checklist">
+                <li><strong>Day 1-2：業務棚卸し</strong><br>
+                全作業を記録し、「任せたい業務リスト」を作成する</li>
+
+                <li><strong>Day 3：優先順位決定</strong><br>
+                「時間がかかっている」×「自分でなくてもできる」業務TOP3を決定</li>
+
+                <li><strong>Day 4：人材プラットフォーム登録</strong><br>
+                ココナラ、クラウドワークスなどに登録し、相場を確認</li>
+
+                <li><strong>Day 5：募集文・依頼文の作成</strong><br>
+                具体的な依頼内容、期待する成果、報酬を明記した依頼文を作成</li>
+
+                <li><strong>Day 6：テスト発注</strong><br>
+                小さな案件を2〜3名に依頼してみる</li>
+
+                <li><strong>Day 7：マニュアル作成開始</strong><br>
+                最も頻繁に発生する業務の手順書を作り始める</li>
+            </ul>
+
+            <div class="success-box">
+                <p><strong>1ヶ月後の目標：</strong><br>
+                ・週5時間以上の作業を外注化<br>
+                ・信頼できる外注パートナー1名以上を確保<br>
+                ・主要業務のマニュアル3本以上を作成</p>
+            </div>
+
+            <h3>チーム化で得られる未来</h3>
+            <p>チーム化は「楽になる」ためではなく、「より大きな価値を生み出す」ためのもの。作業から解放された時間で、あなたにしかできない仕事—新商品開発、高単価顧客の獲得、事業戦略の構築—に集中できます。</p>
+
+            <p>月収300万円を超える起業家は例外なく、優秀なチームを持っています。今日から「一人で全部やる」という発想を手放し、チームで成果を出すリーダーへと進化していきましょう。</p>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-logo">TEAM BUILDING ROADMAP</div>
+            <p>B-RANK GUIDE</p>
+            <p>月収100万円から300万円へのスケールアップを実現する</p>
+        </footer>
+    </div>
+</body>
+</html>
